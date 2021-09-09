@@ -237,10 +237,10 @@
           </button>
         </form>
       </aside>
-
-      <ProductList :products="products"></ProductList>
-
-
+      <section class="catalog">
+        <ProductList :products="products"></ProductList>
+        <BasePaginate :countPages="countProductPages" :page="page"></BasePaginate>
+      </section>
     </div>
   </main>
 
@@ -340,6 +340,7 @@
 
 <style>
 @import "./css/style.min.css"
+
 </style>
 
 <script src="./index.js"></script>
