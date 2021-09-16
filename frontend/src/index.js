@@ -11,12 +11,15 @@ export default {
       countPerPage: 3,
     };
   },
+
   computed: {
     countProductPages() {
       return Math.ceil(products.length / this.countPerPage);
     },
+
     products() {
-      return products;
+      const offset = (this.page - 1) * this.countPerPage;
+      return products.slice(offset, offset + this.countPerPage);
     },
   },
 

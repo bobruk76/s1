@@ -239,7 +239,10 @@
       </aside>
       <section class="catalog">
         <ProductList :products="products"></ProductList>
-        <BasePaginate :countPages="countProductPages" :page="page"></BasePaginate>
+        <BasePaginate
+          :count-pages="countProductPages"
+          v-model="page">
+        </BasePaginate>
       </section>
     </div>
   </main>

@@ -1,20 +1,14 @@
 export default {
+  model: {
+    prop: 'page',
+    event: 'paginate',
+  },
+
   props: ['page', 'countPages'],
 
-  data() {
-    return {
-
-    };
-  },
-  computed: {
-
-  },
-
   methods: {
-
-  },
-
-  created() {
-
+    paginate(page) {
+      this.$emit('paginate', page);
+    },
   },
 };
