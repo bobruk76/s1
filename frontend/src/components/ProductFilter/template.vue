@@ -7,11 +7,11 @@
       <fieldset class="form__block">
         <legend class="form__legend">Цена</legend>
         <label class="form__label form__label--price">
-          <input class="form__input" type="text" name="min-price" value="0">
+          <input class="form__input" type="text" name="min-price" v-model="currentPriceFrom">
           <span class="form__value">От</span>
         </label>
         <label class="form__label form__label--price">
-          <input class="form__input" type="text" name="max-price" value="12345">
+          <input class="form__input" type="text" name="max-price" v-model="currentPriceTo">
           <span class="form__value">До</span>
         </label>
       </fieldset>
@@ -19,7 +19,8 @@
       <fieldset class="form__block">
         <legend class="form__legend">Категория</legend>
         <label class="form__label form__label--select">
-          <select class="form__select" type="text" name="category">
+          <select class="form__select" type="text" name="category" v-model="currentCategoryId">
+            <option value="0">Все категории</option>
             <option v-for="category in categories" :key="category.id"
                     :value="category.id">
               {{ category.title }}

@@ -22,10 +22,10 @@ export default {
   computed: {
     filterProducts() {
       let filterProducts = products;
-      if (this.filterCategoryId >= 0) {
-        filterProducts = filterProducts.filter(product =>
-        product.categoryId === this.filterCategoryId);
-      }
+
+      filterProducts = filterProducts.filter((product) => (
+        product.categoryId === this.filterCategoryId || this.filterCategoryId === 0));
+
       return filterProducts;
     },
 

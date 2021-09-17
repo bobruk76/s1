@@ -87,7 +87,14 @@
     </div>
 
     <div class="content__catalog">
-      <ProductFilter :categories="categories"></ProductFilter>
+      <ProductFilter
+        :categories="categories"
+        :priceFrom.sync="filterPriceFrom"
+        :priceTo.sync="filterPriceTo"
+        :categoryId.sync="filterCategoryId"
+      >
+
+      </ProductFilter>
       <section class="catalog">
         <ProductList :products="products"></ProductList>
         <BasePaginate
@@ -194,6 +201,8 @@
 
 <style>
 @import "./css/style.min.css"
+
+
 
 
 </style>
