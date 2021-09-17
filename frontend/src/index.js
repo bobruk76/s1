@@ -20,11 +20,20 @@ export default {
   },
 
   computed: {
+    /*    filterPriceFrom: {
+      get() {
+        return this.filterProducts.reduce((prev, product) => Math.min(prev, product.price));
+      },
+    },
+    */
+
     filterProducts() {
       let filterProducts = products;
 
       filterProducts = filterProducts.filter((product) => (
-        product.categoryId === this.filterCategoryId || this.filterCategoryId === 0));
+        (product.categoryId === this.filterCategoryId || this.filterCategoryId === 0)
+        && this.filterPriceFrom <= product.price
+        && (this.filterPriceTo >= product.price || this.filterPriceTo === 0)));
 
       return filterProducts;
     },

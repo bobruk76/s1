@@ -13,7 +13,7 @@ export default {
         return this.priceFrom
       },
       set(value) {
-        this.$emit('update.priceFrom', value)
+        this.$emit('update:priceFrom', value)
       },
 
     },
@@ -23,7 +23,7 @@ export default {
         return this.priceTo
       },
       set(value) {
-        this.$emit('update.priceTo', value)
+        this.$emit('update:priceTo', value)
       },
 
     },
@@ -33,7 +33,7 @@ export default {
         return this.categoryId
       },
       set(value) {
-        this.$emit('update.categoryId', value)
+        this.$emit('update:categoryId', value)
       },
 
     },

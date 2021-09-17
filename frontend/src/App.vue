@@ -89,9 +89,9 @@
     <div class="content__catalog">
       <ProductFilter
         :categories="categories"
-        :priceFrom.sync="filterPriceFrom"
-        :priceTo.sync="filterPriceTo"
-        :categoryId.sync="filterCategoryId"
+        :price-from.sync="filterPriceFrom"
+        :price-to.sync="filterPriceTo"
+        :category-id.sync="filterCategoryId"
       >
 
       </ProductFilter>
