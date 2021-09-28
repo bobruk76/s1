@@ -93,6 +93,8 @@
         :price-from.sync="filterPriceFrom"
         :price-to.sync="filterPriceTo"
         :category-id.sync="filterCategoryId"
+        :page.sync="page"
+        :color-id.sync="colorId"
       >
 
       </ProductFilter>

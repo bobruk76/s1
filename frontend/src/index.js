@@ -15,6 +15,7 @@ export default {
       filterCategoryId: 0,
       filterPriceFrom: 0,
       filterPriceTo: 0,
+      colorId: 0,
 
       categories,
       colors,
@@ -35,13 +36,14 @@ export default {
       filterProducts = filterProducts.filter((product) => (
         (product.categoryId === this.filterCategoryId || this.filterCategoryId === 0)
         && this.filterPriceFrom <= product.price
+        && (product.colorIdList.includes(this.colorId) || this.colorId === 0)
         && (this.filterPriceTo >= product.price || this.filterPriceTo === 0)));
 
       return filterProducts;
     },
 
     countProductPages() {
-      return Math.ceil(products.length / this.countPerPage);
+      return Math.ceil(this.filterProducts.length / this.countPerPage);
     },
 
     products() {

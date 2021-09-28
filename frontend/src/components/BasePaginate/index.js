@@ -11,4 +11,6 @@ export default {
       this.$emit('paginate', page);
     },
   },
+  computed: {
+  },
 };
