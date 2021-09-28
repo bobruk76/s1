@@ -1,5 +1,5 @@
 export default {
-  props: ['categories', 'priceFrom', 'priceTo', 'categoryId'],
+  props: ['colors', 'categories', 'priceFrom', 'priceTo', 'categoryId'],
 
   data() {
     return {

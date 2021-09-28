@@ -15,25 +15,12 @@
               {{ product.price }}
        </span>
       <ul class="colors colors--black">
-        <li class="colors__item">
+        <li class="colors__item"
+            v-for="item in colors" :key="item.id"
+            v-show="product.colorIdList.includes(item.id)">
           <label class="colors__label">
-            <input class="colors__radio sr-only" type="radio" name="color-7" value="#FFBE15"
-                   checked="">
-            <span class="colors__value" style="background-color: #FFBE15;">
-                  </span>
-          </label>
-        </li>
-        <li class="colors__item">
-          <label class="colors__label">
-            <input class="colors__radio sr-only" type="radio" name="color-7" value="#8BE000">
-            <span class="colors__value" style="background-color: #8BE000;">
-                  </span>
-          </label>
-        </li>
-        <li class="colors__item">
-          <label class="colors__label">
-            <input class="colors__radio sr-only" type="radio" name="color-7" value="#222">
-            <span class="colors__value" style="background-color: #222;">
+            <input class="colors__radio sr-only" type="radio" name="color-7" :value="item.value">
+            <span class="colors__value" :style="'background-color: ' + item.value + ';'">
                   </span>
           </label>
         </li>

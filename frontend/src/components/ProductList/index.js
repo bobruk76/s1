@@ -1,6 +1,5 @@
-
 export default {
-  props: ['products', ],
+  props: ['products', 'colors'],
 
   data() {
     return {
@@ -9,7 +8,7 @@ export default {
   },
   computed: {
 
-    },
+  },
 
   methods: {
 

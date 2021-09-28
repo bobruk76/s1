@@ -1,3 +1,4 @@
+import colors from './data/colors';
 import categories from './data/categories';
 import products from './data/products';
 import ProductList from './components/ProductList/template.vue';
@@ -16,6 +17,7 @@ export default {
       filterPriceTo: 0,
 
       categories,
+      colors,
     };
   },
 

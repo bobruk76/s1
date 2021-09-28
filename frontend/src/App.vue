@@ -88,6 +88,7 @@
 
     <div class="content__catalog">
       <ProductFilter
+        :colors="colors"
         :categories="categories"
         :price-from.sync="filterPriceFrom"
         :price-to.sync="filterPriceTo"
@@ -96,7 +97,12 @@
 
       </ProductFilter>
       <section class="catalog">
-        <ProductList :products="products"></ProductList>
+        <ProductList
+          :products="products"
+          :colors="colors"
+        >
+
+        </ProductList>
         <BasePaginate
           :count-pages="countProductPages"
           v-model="page">

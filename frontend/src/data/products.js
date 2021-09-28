@@ -5,6 +5,7 @@ export default [
     title: 'Радионяня Motorola MBP16',
     price: 3690,
     img: 'img/radio.jpg',
+    colorIdList: [1, 4, 2],
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ export default [
     title: 'Ультразвуковая зубная щётка Playbrush Smart Sonic',
     price: 5660,
     img: 'img/toothbrush.jpg',
+    colorIdList: [6, 1, 4],
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ export default [
     title: 'Смартфон Xiaomi Mi Mix 3 6/128GB',
     price: 21790,
     img: 'img/phone.jpg',
+    colorIdList: [],
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ export default [
     title: 'Электроскейт Razor Cruiser',
     price: 24690,
     img: 'img/board.jpg',
+    colorIdList: [3, 5, 7],
   },
   {
     id: 5,
@@ -33,6 +37,7 @@ export default [
     title: 'Смартфон Xiaomi Redmi 6/128GB',
     price: 8960,
     img: 'img/phone-3.jpg',
+    colorIdList: [],
   },
   {
     id: 6,
@@ -40,6 +45,7 @@ export default [
     title: 'Электрический дрифт-карт Razor Crazy Cart',
     price: 39900,
     img: 'img/bicycle.jpg',
+    colorIdList: [],
   },
   {
     id: 7,
@@ -47,6 +53,7 @@ export default [
     title: 'Гироскутер Razor Hovertrax 2.0',
     price: 34900,
     img: 'img/wheels.jpg',
+    colorIdList: [],
   },
   {
     id: 8,
@@ -54,6 +61,7 @@ export default [
     title: 'Детский трюковой самокат Razor Grom',
     price: 4990,
     img: 'img/scooter.jpg',
+    colorIdList: [],
   },
   {
     id: 9,
@@ -61,6 +69,7 @@ export default [
     title: 'Роллерсёрф Razor RipStik Air Pro',
     price: 6690,
     img: 'img/ripstik.jpg',
+    colorIdList: [],
   },
   {
     id: 10,
@@ -68,5 +77,6 @@ export default [
     title: 'Наушники AirPods с беспроводным зарядным футляром',
     price: 16560,
     img: 'img/airpods.jpg',
+    colorIdList: [],
   },
 ];
