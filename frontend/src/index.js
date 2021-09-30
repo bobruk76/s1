@@ -1,9 +1,9 @@
-import colors from './data/colors';
-import categories from './data/categories';
-import products from './data/products';
-import ProductList from './components/ProductList/template.vue';
-import BasePaginate from './components/BasePaginate/template.vue';
-import ProductFilter from './components/ProductFilter/template.vue';
+import colors from '@/data/colors';
+import categories from '@/data/categories';
+import products from '@/data/products';
+import ProductList from '@/components/ProductList/template.vue';
+import BasePaginate from '@/components/BasePaginate/template.vue';
+import ProductFilter from '@/components/ProductFilter/template.vue';
 
 export default {
   components: { ProductList, BasePaginate, ProductFilter },
@@ -11,7 +11,7 @@ export default {
   data() {
     return {
       page: 1,
-      countPerPage: 3,
+      countPerPage: 4,
       filterCategoryId: 0,
       filterPriceFrom: 0,
       filterPriceTo: 0,
