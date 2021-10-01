@@ -2,9 +2,10 @@ import ProductPage from '@/pages/ProductPage/template.vue';
 
 export default {
   props: ['products', 'colors'],
-  components: { ProductPage },
+  components: {
+    ProductPage
+  },
   data() {
-    return {
-    };
+    return {};
   },
 };
