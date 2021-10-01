@@ -1,9 +1,9 @@
-import ProductPage from '@/pages/ProductPage/template.vue';
+import ProductItem from '@/components/ProductItem/template.vue';
 
 export default {
   props: ['products', 'colors'],
   components: {
-    ProductPage
+    ProductItem,
   },
   data() {
     return {};
