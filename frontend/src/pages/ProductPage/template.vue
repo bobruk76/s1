@@ -14,10 +14,15 @@
   </span>
 
   <ul class="colors colors&#45;&#45;black">
-    <li class="colors__item" v-for="item in colors" :key="item.id" v-show="product.colorIdList.includes(item.id)">
+    <li class="colors__item" v-for="item in colors"
+      :key="item.id"
+      v-show="product.colorIdList.includes(item.id)">
       <label class="colors__label">
-        <input class="colors__radio sr-only" type="radio" name="color-7" :value="item.value">
-        <span class="colors__value" :style="'background-color: ' + item.value + ';'">
+        <input class="colors__radio sr-only"
+          type="radio" name="color-7"
+          :value="item.value">
+        <span class="colors__value"
+          :style="'background-color: ' + item.value + ';'">
         </span>
       </label>
     </li>
