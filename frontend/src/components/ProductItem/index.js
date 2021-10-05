@@ -11,6 +11,6 @@ export default {
   methods: {
     gotoPage(pageName, pageParams) {
       eventBus.$emit('gotoPage', pageName, pageParams);
-    };
+    },
   },
 };

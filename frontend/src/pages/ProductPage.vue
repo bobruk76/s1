@@ -1,4 +1,4 @@
-<template>
+<template lang="html">
   <main class="content container">
     <div class="content__top">
       <ul class="breadcrumbs">
@@ -195,7 +195,19 @@
       </div>
     </section>
   </main>
-
 </template>
 
-<script src="./index.js"></script>
+<script>
+export default {
+  import colors from '@/data/colors';
+  import products from '@/data/products';
+  import eventBus from '@/eventBus';
+
+  data() {
+    return {
+      colors,
+      products,
+    };
+  },
+}
+</script>
