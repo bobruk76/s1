@@ -1,4 +1,5 @@
 import colors from '@/data/colors';
+
 export default {
   props: ['categories', 'priceFrom', 'priceTo', 'categoryId', 'page', 'colorId'],
 
@@ -8,6 +9,7 @@ export default {
       currentPriceTo: 0,
       currentCategoryId: 0,
       currentColorId: 0,
+      colors,
     };
   },
   methods: {

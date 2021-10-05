@@ -1,5 +1,8 @@
 <template>
-  <component :is='currentPageComponent' :page-params='currentParams'></component>
+  <component
+    :is='currentPageComponent'
+    :page-params='currentParams'>
+  </component>
 </template>
 
 <style>
@@ -7,47 +10,46 @@
 </style>
 
 <script>
-  import MainPage from '@/pages/MainPage/template.vue';
-  import ProductPage from '@/pages/ProductPage/template.vue';
-  import NotFoundPage from '@/pages/NotFoundPage.vue';
-  import eventBus from '@/eventBus.js';
+import MainPage from '@/pages/MainPage/template.vue';
+import ProductPage from '@/pages/ProductPage.vue';
+import NotFoundPage from '@/pages/NotFoundPage.vue';
+import eventBus from '@/eventBus';
 
-  const routes = {
-    main: 'MainPage',
-    product: 'ProductPage',
-  };
+const routes = {
+  main: 'MainPage',
+  product: 'ProductPage',
+};
 
-  export default {
-    components: {
-      MainPage,
-      ProductPage,
-      NotFoundPage,
+export default {
+  components: {
+    MainPage,
+    ProductPage,
+    NotFoundPage,
+  },
+
+  data() {
+    return {
+      currentPage: 'main',
+      currentParams: {},
+    };
+  },
+
+  methods: {
+    gotoPage(pageName, pageParams) {
+      this.currentPage = pageName;
+      this.currentParams = pageParams || {};
     },
+  },
 
-    data() {
-      return {
-        currentPage: 'main',
-        currentParams: {},
+  created() {
+    eventBus.$on('gotoPage',
+      (pageName, pageParams) => this.gotoPage(pageName, pageParams));
+  },
 
-      };
+  computed: {
+    currentPageComponent() {
+      return routes[this.currentPage] || 'NotFoundPage';
     },
-
-    methods: {
-      gotoPage(pageName, pageParams) {
-        this.currentPage = pageName;
-        this.currentParams = pageParams || {};
-      },
-    },
-
-    created() {
-      eventBus.$on(gotoPage,
-        (pageName, pageParams) => this.gotoPage(pageName, pageParams));
-    },
-
-    computed: {
-      currentPageComponent() {
-        return routes[this.currentPage] || 'NotFoundPage';
-      }
-    },
-  };
+  },
+};
 </script>

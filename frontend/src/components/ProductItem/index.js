@@ -1,11 +1,11 @@
-import colors from '@/data/colors';
+import allColors from '@/data/colors';
 import eventBus from '@/eventBus';
+
 export default {
   props: ['product'],
   data() {
     return {
-      product,
-      colors,
+      allColors,
     };
   },
   methods: {

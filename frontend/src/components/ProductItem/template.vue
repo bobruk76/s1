@@ -2,7 +2,7 @@
 <div>
   <a class="catalog__pic"
     href="#"
-    @click="gotoPage('product', {id: product.id})"">
+    @click="gotoPage('product', {id: product.id})">
     <img :src="product.img" :alt="product.title">
   </a>
   <h3 class="catalog__title">
@@ -16,7 +16,7 @@
   </span>
 
   <ul class="colors colors&#45;&#45;black">
-    <li class="colors__item" v-for="item in colors"
+    <li class="colors__item" v-for="item in allColors"
       :key="item.id"
       v-show="product.colorIdList.includes(item.id)">
       <label class="colors__label">
