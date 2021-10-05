@@ -1,6 +1,8 @@
 <template>
 <div>
-  <a class="catalog__pic" href="#">
+  <a class="catalog__pic"
+    href="#"
+    @click="gotoPage('product', {id: product.id})"">
     <img :src="product.img" :alt="product.title">
   </a>
   <h3 class="catalog__title">

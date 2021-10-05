@@ -1,5 +1,6 @@
+import colors from '@/data/colors';
 export default {
-  props: ['colors', 'categories', 'priceFrom', 'priceTo', 'categoryId', 'page', 'colorId'],
+  props: ['categories', 'priceFrom', 'priceTo', 'categoryId', 'page', 'colorId'],
 
   data() {
     return {

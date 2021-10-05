@@ -17,11 +17,12 @@
 
     data() {
       return {
-        currentPage = 'main',
-        currentParams = {}
+        currentPage: 'main',
+        currentParams: {}
 
       };
     },
+
     methods: {
       gotoPage(pageName, pageParams) {
         this.currentPage = pageName;

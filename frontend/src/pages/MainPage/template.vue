@@ -88,7 +88,6 @@
 
     <div class="content__catalog">
       <ProductFilter
-        :colors="colors"
         :categories="categories"
         :price-from.sync="filterPriceFrom"
         :price-to.sync="filterPriceTo"
@@ -101,7 +100,6 @@
       <section class="catalog">
         <ProductList
           :products="products"
-          :colors="colors"
         >
 
         </ProductList>

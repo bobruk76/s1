@@ -1,7 +1,7 @@
 import ProductItem from '@/components/ProductItem/template.vue';
 
 export default {
-  props: ['products', 'colors'],
+  props: ['products'],
   components: {
     ProductItem,
   },
