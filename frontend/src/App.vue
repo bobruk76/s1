@@ -8,6 +8,7 @@
 
 <script>
   import MainPage from '@/pages/MainPage/template.vue';
+  import eventBus from '@/eventBus.js'
 
   export default {
     components: {
@@ -16,8 +17,21 @@
 
     data() {
       return {
+        currentPage = 'main',
+        currentParams = {}
 
       };
     },
+    methods: {
+      gotoPage(pageName, pageParams) {
+        this.currentPage = pageName;
+        this.currentParams = pageParams || {};
+      }
+    },
+
+    created() {
+      eventBus.$on(gotoPage,
+        (pageName, pageParams) => this.gotoPage(pageName, pageParams));
+    }
   };
 </script>
