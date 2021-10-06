@@ -38,7 +38,7 @@
         <div class="item__form">
           <form class="form" action="#" method="POST">
             <b class="item__price">
-              {{ product.price }} ₽
+              {{ product.price | numberFormat }} ₽
             </b>
 
             <fieldset class="form__block">
@@ -66,37 +66,7 @@
             </fieldset>
 
             <fieldset class="form__block">
-              <legend class="form__legend">Объемб в ГБ:</legend>
 
-              <ul class="sizes sizes--primery">
-                <li class="sizes__item">
-                  <label class="sizes__label">
-                    <input class="sizes__radio sr-only"
-                           type="radio" name="sizes-item" value="32">
-                    <span class="sizes__value">
-                      32gb
-                    </span>
-                  </label>
-                </li>
-                <li class="sizes__item">
-                  <label class="sizes__label">
-                    <input class="sizes__radio sr-only"
-                           type="radio" name="sizes-item" value="64">
-                    <span class="sizes__value">
-                      64gb
-                    </span>
-                  </label>
-                </li>
-                <li class="sizes__item">
-                  <label class="sizes__label">
-                    <input class="sizes__radio sr-only"
-                           type="radio" name="sizes-item" value="128" checked="">
-                    <span class="sizes__value">
-                      128gb
-                    </span>
-                  </label>
-                </li>
-              </ul>
             </fieldset>
 
             <div class="item__row">
@@ -169,6 +139,7 @@ import colors from '@/data/colors';
 import products from '@/data/products';
 import categories from '@/data/categories';
 import gotoPage from '@/helpers/gotoPage';
+import numberFormat from '@/helpers/numberFormat';
 
 export default {
   props: ['pageParams'],
@@ -180,6 +151,9 @@ export default {
   },
   methods: {
     gotoPage,
+  },
+  filters: {
+    numberFormat,
   },
   computed: {
     product() {

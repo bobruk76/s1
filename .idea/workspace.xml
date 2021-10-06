@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69f1323a-4df1-414a-93a9-671ba9109f9a" name="Changes" comment="add helpers">
+    <list default="true" id="69f1323a-4df1-414a-93a9-671ba9109f9a" name="Changes" comment="add category">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductItem/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductItem/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductItem/template.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductItem/template.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/ProductPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ProductPage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,7 +52,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633502191283</updated>
-      <workItem from="1633505123938" duration="8761000" />
+      <workItem from="1633505123938" duration="10200000" />
     </task>
     <task id="LOCAL-00001" summary="add helpers">
       <created>1633510869312</created>
@@ -66,7 +68,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633512628140</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="add category">
+      <created>1633521272197</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1633521272197</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -85,6 +94,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add helpers" />
-    <option name="LAST_COMMIT_MESSAGE" value="add helpers" />
+    <MESSAGE value="add category" />
+    <option name="LAST_COMMIT_MESSAGE" value="add category" />
   </component>
 </project>
