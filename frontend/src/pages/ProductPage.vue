@@ -232,9 +232,9 @@
 <script>
 import colors from '@/data/colors';
 import products from '@/data/products';
-import eventBus from '@/eventBus';
 
 export default {
+  props: ['pageParams'],
 
   data() {
     return {
@@ -244,7 +244,7 @@ export default {
   },
   computed: {
     product() {
-      return this.products.filter((item) => item.id === eventBus.pageParams.id);
+      return this.products.find((item) => item.id === this.pageParams.id);
     },
   },
 };

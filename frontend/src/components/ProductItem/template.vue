@@ -2,7 +2,7 @@
   <div>
     <a class="catalog__pic"
        href="#"
-       @click="gotoPage('product', {id: product.id})">
+       @click.prevent="gotoPage('product', {id: product.id})">
       <img :src="product.img" :alt="product.title">
     </a>
     <h3 class="catalog__title">

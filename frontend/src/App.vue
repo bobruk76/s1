@@ -14,7 +14,6 @@ import MainPage from '@/pages/MainPage/template.vue';
 import ProductPage from '@/pages/ProductPage.vue';
 import NotFoundPage from '@/pages/NotFoundPage.vue';
 import eventBus from '@/eventBus';
-import gotoPage from "@/helpers/gotoPage";
 
 const routes = {
   main: 'MainPage',
