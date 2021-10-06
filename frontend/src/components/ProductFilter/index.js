@@ -41,4 +41,7 @@ export default {
       this.currentCategoryId = value;
     },
   },
+  created() {
+    this.currentCategoryId = this.categoryId;
+  }
 };

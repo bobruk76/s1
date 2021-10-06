@@ -205,25 +205,23 @@
 </template>
 
 <script>
-import colors from '@/data/colors';
 import products from '@/data/products';
 import ProductList from '@/components/ProductList/template.vue';
 import BasePaginate from '@/components/BasePaginate/template.vue';
 import ProductFilter from '@/components/ProductFilter/template.vue';
 
 export default {
+  props: ['pageParams'],
   components: {ProductList, BasePaginate, ProductFilter},
 
   data() {
     return {
       page: 1,
       countPerPage: 4,
-      filterCategoryId: 0,
       filterPriceFrom: 0,
       filterPriceTo: 0,
       colorId: 0,
-
-      colors,
+      filterCategoryId: 0,
     };
   },
 
@@ -248,6 +246,10 @@ export default {
       const offset = (this.page - 1) * this.countPerPage;
       return this.filterProducts.slice(offset, offset + this.countPerPage);
     },
+  },
+
+  created() {
+    this.filterCategoryId = this.pageParams.categoryId || 0;
   },
 
 };
