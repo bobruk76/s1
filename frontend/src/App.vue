@@ -10,7 +10,7 @@
 </style>
 
 <script>
-import MainPage from '@/pages/MainPage/template.vue';
+import MainPage from '@/pages/MainPage.vue';
 import ProductPage from '@/pages/ProductPage.vue';
 import NotFoundPage from '@/pages/NotFoundPage.vue';
 import eventBus from '@/eventBus';

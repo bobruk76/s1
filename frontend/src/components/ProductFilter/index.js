@@ -1,7 +1,7 @@
 import colors from '@/data/colors';
-
+import categories from '@/data/categories';
 export default {
-  props: ['categories', 'priceFrom', 'priceTo', 'categoryId', 'page', 'colorId'],
+  props: ['priceFrom', 'priceTo', 'categoryId', 'page', 'colorId'],
 
   data() {
     return {
@@ -10,6 +10,7 @@ export default {
       currentCategoryId: 0,
       currentColorId: 0,
       colors,
+      categories,
     };
   },
   methods: {

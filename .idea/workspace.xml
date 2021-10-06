@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="69f1323a-4df1-414a-93a9-671ba9109f9a" name="Changes" comment="add category">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductItem/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductItem/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductItem/template.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductItem/template.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductFilter/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductFilter/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/MainPage/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/MainPage/template.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/ProductPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ProductPage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>

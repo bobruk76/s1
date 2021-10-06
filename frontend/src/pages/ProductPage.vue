@@ -9,7 +9,7 @@
         </li>
         <li class="breadcrumbs__item">
           <a class="breadcrumbs__link" href="#"
-             @click.prevent="gotoPage('category',{id: category.id})">
+             @click.prevent="gotoPage('main',{categoryId: category.id})">
             {{ category.title }}
           </a>
         </li>
