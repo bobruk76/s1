@@ -24,40 +24,40 @@
       <div class="item__pics pics">
         <div class="pics__wrapper">
           <img width="570" height="570"
-          :src="product.img"
-          :alt="product.title">
+               :src="product.img"
+               :alt="product.title">
         </div>
         <ul class="pics__list">
           <li class="pics__item">
             <a href="" class="pics__link pics__link--current">
               <img width="98" height="98"
-              src="img/phone-square-1.jpg"
-              srcset="img/phone-square-1@2x.jpg 2x"
-              alt="Название товара">
+                   src="img/phone-square-1.jpg"
+                   srcset="img/phone-square-1@2x.jpg 2x"
+                   alt="Название товара">
             </a>
           </li>
           <li class="pics__item">
             <a href="" class="pics__link">
               <img width="98" height="98"
-              src="img/phone-square-2.jpg"
-              srcset="img/phone-square-2@2x.jpg 2x"
-              alt="Название товара">
+                   src="img/phone-square-2.jpg"
+                   srcset="img/phone-square-2@2x.jpg 2x"
+                   alt="Название товара">
             </a>
           </li>
           <li class="pics__item">
             <a href="" class="pics__link">
               <img width="98" height="98"
-              src="img/phone-square-3.jpg"
-              srcset="img/phone-square-3@2x.jpg 2x"
-              alt="Название товара">
+                   src="img/phone-square-3.jpg"
+                   srcset="img/phone-square-3@2x.jpg 2x"
+                   alt="Название товара">
             </a>
           </li>
           <li class="pics__item">
             <a class="pics__link" href="#">
               <img width="98" height="98"
-              src="img/phone-square-4.jpg"
-              srcset="img/phone-square-4@2x.jpg 2x"
-              alt="Название товара">
+                   src="img/phone-square-4.jpg"
+                   srcset="img/phone-square-4@2x.jpg 2x"
+                   alt="Название товара">
             </a>
           </li>
         </ul>
@@ -79,18 +79,18 @@
               <ul class="colors">
 
                 <li class="colors__item"
-                  v-for="item in colors"
-                  :key="item.id"
-                  v-show="product.colorIdList.includes(item.id)"
-                  >
+                    v-for="item in colors"
+                    :key="item.id"
+                    v-show="product.colorIdList.includes(item.id)"
+                >
                   <label class="colors__label">
                     <input class="colors__radio sr-only"
-                      type="radio"
-                      name="color-item"
-                      :value="item.value"
-                      >
+                           type="radio"
+                           name="color-item"
+                           :value="item.value"
+                    >
                     <span class="colors__value"
-                      :style="'background-color: ' + item.value + ';'">
+                          :style="'background-color: ' + item.value + ';'">
                     </span>
                   </label>
                 </li>
@@ -105,7 +105,7 @@
                 <li class="sizes__item">
                   <label class="sizes__label">
                     <input class="sizes__radio sr-only"
-                    type="radio" name="sizes-item" value="32">
+                           type="radio" name="sizes-item" value="32">
                     <span class="sizes__value">
                       32gb
                     </span>
@@ -114,7 +114,7 @@
                 <li class="sizes__item">
                   <label class="sizes__label">
                     <input class="sizes__radio sr-only"
-                    type="radio" name="sizes-item" value="64">
+                           type="radio" name="sizes-item" value="64">
                     <span class="sizes__value">
                       64gb
                     </span>
@@ -123,7 +123,7 @@
                 <li class="sizes__item">
                   <label class="sizes__label">
                     <input class="sizes__radio sr-only"
-                    type="radio" name="sizes-item" value="128" checked="">
+                           type="radio" name="sizes-item" value="128" checked="">
                     <span class="sizes__value">
                       128gb
                     </span>
@@ -199,13 +199,13 @@
             Wahoo ELEMNT BOLT GPS – это велокомпьютер, который позволяет
             оптимизировать свои велотренировки, сделав их максимально
             эффективными. Wahoo ELEMNT BOLT GPS синхронизируется с
-            датчиками по ANT+, объединяя полученную с них информацию.
+            датчиками по ANT+, объединяя полученную с них информацию.
             Данные отображаются на дисплее, а также сохраняются на смартфоне.
             При этом на мобильное устройство можно установить как фирменное
             приложение, так и различные приложения сторонних разработчиков.
             Велокомпьютер точно отслеживает местоположение, принимая сигнал с
             целого комплекса спутников. Эта информация позволяет смотреть уже
-            преодоленные маршруты и планировать новые велопрогулки.
+            преодоленные маршруты и планировать новые велопрогулки.
           </p>
 
           <h3>Дизайн</h3>
@@ -214,14 +214,14 @@
             Велокомпьютер Wahoo ELEMNT BOLT очень компактный. Размеры устройства
             составляют всего 74,6 x 47,3 x 22,1 мм. что не превышает габариты
             смартфона. Корпус гаджета выполнен из черного пластика.
-            На обращенной к пользователю стороне расположен дисплей диагональю
+            На обращенной к пользователю стороне расположен дисплей диагональю
             56 мм. На дисплей выводятся координаты и скорость, а также
-            полученная со смартфона и синхронизированных датчиков информация:
+            полученная со смартфона и синхронизированных датчиков информация:
             интенсивность, скорость вращения педалей, пульс и т.д. (датчики не
             входят в комплект поставки). Корпус велокомпьютера имеет степень
-            защиты от влаги IPX7. Это означает, что устройство не боится пыли,
+            защиты от влаги IPX7. Это означает, что устройство не боится пыли,
             а также выдерживает кратковременное (до 30 минут) погружение в воду
-            на глубину не более 1 метра.
+            на глубину не более 1 метра.
           </p>
         </div>
       </div>
@@ -230,17 +230,22 @@
 </template>
 
 <script>
-  import colors from '@/data/colors';
-  import products from '@/data/products';
-  import eventBus from '@/eventBus';
+import colors from '@/data/colors';
+import products from '@/data/products';
+import eventBus from '@/eventBus';
 
-  export default {
+export default {
 
-    data() {
-      return {
-        colors,
-        products,
-      };
+  data() {
+    return {
+      colors,
+      products,
+    };
+  },
+  computed: {
+    product() {
+      return this.products.filter((item) => item.id === eventBus.pageParams.id);
     },
-  };
+  },
+};
 </script>

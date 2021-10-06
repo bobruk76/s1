@@ -1,16 +1,15 @@
 import allColors from '@/data/colors';
-import eventBus from '@/eventBus';
+import gotoPage from "@/helpers/gotoPage";
 
 export default {
   props: ['product'],
   data() {
     return {
       allColors,
+      gotoPage,
     };
   },
   methods: {
-    gotoPage(pageName, pageParams) {
-      eventBus.$emit('gotoPage', pageName, pageParams);
-    },
+
   },
 };
