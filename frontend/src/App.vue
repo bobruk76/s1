@@ -3,10 +3,7 @@
 
   <Header></Header>
 
-  <component
-    :is='currentPageComponent'
-    :page-params='currentParams'>
-  </component>
+  <router-view></router-view>
 
   <Footer></Footer>
 
@@ -18,50 +15,12 @@
 </style>
 
 <script>
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
-import MainPage from '@/pages/MainPage.vue';
-import ProductPage from '@/pages/ProductPage.vue';
-import NotFoundPage from '@/pages/NotFoundPage.vue';
-import eventBus from '@/eventBus';
-
-const routes = {
-  main: 'MainPage',
-  product: 'ProductPage',
-};
+import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
-  components: {
-    Footer,
-    Header,
-    MainPage,
-    ProductPage,
-    NotFoundPage,
-  },
+  components: { Header, Footer },
 
-  data() {
-    return {
-      currentPage: 'main',
-      currentParams: {},
-    };
-  },
-
-  methods: {
-    gotoPage(pageName, pageParams) {
-      this.currentPage = pageName;
-      this.currentParams = pageParams || {};
-    },
-  },
-
-  created() {
-    eventBus.$on('gotoPage',
-      (pageName, pageParams) => this.gotoPage(pageName, pageParams));
-  },
-
-  computed: {
-    currentPageComponent() {
-      return routes[this.currentPage] || 'NotFoundPage';
-    },
-  },
 };
+
 </script>

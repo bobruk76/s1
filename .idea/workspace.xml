@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="69f1323a-4df1-414a-93a9-671ba9109f9a" name="Changes" comment="remove header &amp; footer to commponebt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductItem/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductItem/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductItem/template.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductItem/template.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/MainPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/MainPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ProductPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ProductPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1633502191283</updated>
       <workItem from="1633505123938" duration="10200000" />
-      <workItem from="1633587361758" duration="2359000" />
+      <workItem from="1633587361758" duration="7308000" />
     </task>
     <task id="LOCAL-00001" summary="add helpers">
       <created>1633510869312</created>

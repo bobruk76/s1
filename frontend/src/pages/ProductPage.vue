@@ -3,15 +3,16 @@
     <div class="content__top">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
-          <a class="breadcrumbs__link" href="#" @click.prevent="gotoPage('main')">
+          <router-link class="breadcrumbs__link" :to="{name: 'main'}">
             Каталог
-          </a>
+          </router-link>
         </li>
         <li class="breadcrumbs__item">
-          <a class="breadcrumbs__link" href="#"
-             @click.prevent="gotoPage('main',{categoryId: category.id})">
+          <router-link
+            class="breadcrumbs__link"
+            :to="{name: 'main', params : {categoryId: product.categoryId}}">
             {{ category.title }}
-          </a>
+          </router-link>
         </li>
         <li class="breadcrumbs__item">
           <a class="breadcrumbs__link">
@@ -138,26 +139,23 @@
 import colors from '@/data/colors';
 import products from '@/data/products';
 import categories from '@/data/categories';
-import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
 
 export default {
-  props: ['pageParams'],
-
   data() {
     return {
       colors,
     };
   },
   methods: {
-    gotoPage,
+
   },
   filters: {
     numberFormat,
   },
   computed: {
     product() {
-      return products.find((item) => item.id === this.pageParams.id);
+      return products.find((item) => item.id === +this.$route.params.id);
     },
     category() {
       return categories.find((item) => item.id === this.product.categoryId);

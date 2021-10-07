@@ -1,5 +1,4 @@
 import allColors from '@/data/colors';
-import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
 
 export default {
@@ -11,8 +10,5 @@ export default {
   },
   filters: {
     numberFormat,
-  },
-  methods: {
-    gotoPage,
   },
 };

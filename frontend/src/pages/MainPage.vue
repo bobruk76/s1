@@ -79,7 +79,7 @@ export default {
   },
 
   created() {
-    this.filterCategoryId = this.pageParams.categoryId || 0;
+    this.filterCategoryId = this.$route.params.categoryId || 0;
   },
 
 };
