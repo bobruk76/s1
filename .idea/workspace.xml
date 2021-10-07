@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69f1323a-4df1-414a-93a9-671ba9109f9a" name="Changes" comment="add category">
+    <list default="true" id="69f1323a-4df1-414a-93a9-671ba9109f9a" name="Changes" comment="finish 5">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductFilter/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductFilter/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/MainPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/MainPage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,6 +53,7 @@
       <option name="presentableId" value="Default" />
       <updated>1633502191283</updated>
       <workItem from="1633505123938" duration="10200000" />
+      <workItem from="1633587361758" duration="1503000" />
     </task>
     <task id="LOCAL-00001" summary="add helpers">
       <created>1633510869312</created>
@@ -82,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633527482018</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="finish 5">
+      <created>1633528418215</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1633528418215</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,10 +106,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add helpers" />
     <MESSAGE value="add category" />
-    <option name="LAST_COMMIT_MESSAGE" value="add category" />
+    <MESSAGE value="finish 5" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish 5" />
   </component>
 </project>

@@ -1,8 +1,16 @@
 <template>
+  <body>
+
+  <Header></Header>
+
   <component
     :is='currentPageComponent'
     :page-params='currentParams'>
   </component>
+
+  <Footer></Footer>
+
+  </body>
 </template>
 
 <style>
@@ -10,6 +18,8 @@
 </style>
 
 <script>
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
 import MainPage from '@/pages/MainPage.vue';
 import ProductPage from '@/pages/ProductPage.vue';
 import NotFoundPage from '@/pages/NotFoundPage.vue';
@@ -22,6 +32,8 @@ const routes = {
 
 export default {
   components: {
+    Footer,
+    Header,
     MainPage,
     ProductPage,
     NotFoundPage,
