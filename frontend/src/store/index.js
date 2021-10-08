@@ -7,7 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     cartProducts: [
-      { productId: 0, amount: 0 },
+      { productId: 3, amount: 5 },
     ],
   },
   mutations: {
@@ -22,12 +22,10 @@ export default new Vuex.Store({
   },
   getters: {
     cartDetailsProducts(state) {
-      return state.cartProducts.map((item) => {
-        return {
-          ...item,
-          product: products.find((product) => product.id === item.productId),
-        };
-      });
+      return state.cartProducts.map((item) => ({
+        ...item,
+        product: products.find((product) => product.id === item.productId),
+      }));
     },
   },
 });
