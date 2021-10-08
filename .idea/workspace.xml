@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69f1323a-4df1-414a-93a9-671ba9109f9a" name="Changes" comment="add router(ex.6)">
-      <change beforePath="$PROJECT_DIR$/.idea/s1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/s1.iml" afterDir="false" />
+    <list default="true" id="69f1323a-4df1-414a-93a9-671ba9109f9a" name="Changes" comment="add store">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Vue Single File Component" />
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -56,7 +55,7 @@
       <updated>1633502191283</updated>
       <workItem from="1633505123938" duration="10200000" />
       <workItem from="1633587361758" duration="7797000" />
-      <workItem from="1633682473233" duration="2871000" />
+      <workItem from="1633682473233" duration="7916000" />
     </task>
     <task id="LOCAL-00001" summary="add helpers">
       <created>1633510869312</created>
@@ -107,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633616789678</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="add store">
+      <created>1633692447678</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1633692447678</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,6 +137,7 @@
     <MESSAGE value="finish 5" />
     <MESSAGE value="remove header &amp; footer to commponebt" />
     <MESSAGE value="add router(ex.6)" />
-    <option name="LAST_COMMIT_MESSAGE" value="add router(ex.6)" />
+    <MESSAGE value="add store" />
+    <option name="LAST_COMMIT_MESSAGE" value="add store" />
   </component>
 </project>
