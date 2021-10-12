@@ -28,7 +28,7 @@
           <ul class="cart__list">
 
             <li class="cart__item product"
-                v-for="item in $store.getters.cartDetailsProducts"
+                v-for="item in cproducts"
                 :key="item.productId"
             >
               <div class="product__pic">
@@ -38,11 +38,8 @@
               <h3 class="product__title">
                 {{ item.product.title }}
               </h3>
-              <p class="product__info">
-                Объем: <span>128GB</span>
-              </p>
               <span class="product__code">
-                Артикул: 1501230
+                Артикул: {{ item.productId }}}
               </span>
 
               <div class="product__counter form__counter">
@@ -52,7 +49,7 @@
                   </svg>
                 </button>
 
-                <input type="text" value="1" name="count">
+                <input type="text" :value="item.amount" name="count">
 
                 <button type="button" aria-label="Добавить один товар">
                   <svg width="10" height="10" fill="currentColor">
@@ -62,10 +59,11 @@
               </div>
 
               <b class="product__price">
-                18 990 ₽
+                {{ item.totalPrice | numberFormat }} ₽
               </b>
 
-              <button class="product__del button-del" type="button" aria-label="Удалить товар из корзины">
+              <button class="product__del button-del"
+                      type="button" aria-label="Удалить товар из корзины">
                 <svg width="20" height="20" fill="currentColor">
                   <use xlink:href="#icon-close"></use>
                 </svg>
@@ -77,10 +75,10 @@
 
         <div class="cart__block">
           <p class="cart__desc">
-            Мы&nbsp;посчитаем стоимость доставки на&nbsp;следующем этапе
+            Мы посчитаем стоимость доставки на следующем этапе
           </p>
           <p class="cart__price">
-            Итого: <span>32 970 ₽</span>
+            Итого: <span>{{ totalSum | numberFormat }} ₽</span>
           </p>
 
           <button class="cart__button button button--primery" type="submit">
@@ -93,9 +91,29 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import numberFormat from '@/helpers/numberFormat';
+
 export default {
-  name: "CartPage"
-}
+  filters: {
+    numberFormat,
+  },
+  computed: {
+    ...mapGetters({
+      products: 'cartDetailsProducts',
+    }),
+    cproducts() {
+      return this.products.map((item) => ({
+        ...item,
+        totalPrice: item.amount * item.product.price,
+      }));
+    },
+
+    totalSum() {
+      return this.cproducts.reduce((sum, item) => sum + item.totalPrice, 0);
+    },
+  },
+};
 </script>
 
 <style scoped>
