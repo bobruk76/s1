@@ -20,6 +20,7 @@ export default new Vuex.Store({
       }
     },
   },
+
   getters: {
     cartDetailsProducts(state) {
       return state.cartProducts.map((item) => ({

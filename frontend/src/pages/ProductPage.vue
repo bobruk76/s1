@@ -78,9 +78,9 @@
                   </svg>
                 </button>
 
-                <input type="text" value="1" name="count">
+                <input type="text" v-model="productAmount">
 
-                <button type="button" aria-label="Добавить один товар">
+                <button type="button" aria-label="Добавить один товар" @click="increment">
                   <svg width="12" height="12" fill="currentColor">
                     <use xlink:href="#icon-plus"></use>
                   </svg>
@@ -145,9 +145,24 @@ export default {
   data() {
     return {
       colors,
+      productAmount: 1,
     };
   },
   methods: {
+    addToCart() {
+      this.$store.commit(
+        'addProductToCart',
+        { productId: this.product.id, amount: this.productAmount },
+      );
+    },
+
+    increment() {
+      this.productAmount += 1;
+    },
+
+    discrement() {
+      this.productAmount = (this.productAmount > 1) ?? this.productAmount - 1;
+    },
 
   },
   filters: {

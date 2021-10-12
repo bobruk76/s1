@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="69f1323a-4df1-414a-93a9-671ba9109f9a" name="Changes" comment="add CartPage">
+    <list default="true" id="69f1323a-4df1-414a-93a9-671ba9109f9a" name="Changes" comment="add store with getters">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/CartPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/CartPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/ProductPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/ProductPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +61,7 @@
       <workItem from="1633505123938" duration="10200000" />
       <workItem from="1633587361758" duration="7797000" />
       <workItem from="1633682473233" duration="11406000" />
-      <workItem from="1634019083491" duration="20324000" />
+      <workItem from="1634019083491" duration="22724000" />
     </task>
     <task id="LOCAL-00001" summary="add helpers">
       <created>1633510869312</created>
@@ -132,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1633704474402</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="add store with getters">
+      <created>1634048985743</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1634048985743</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +166,7 @@
     <MESSAGE value="add router(ex.6)" />
     <MESSAGE value="add store" />
     <MESSAGE value="add CartPage" />
-    <option name="LAST_COMMIT_MESSAGE" value="add CartPage" />
+    <MESSAGE value="add store with getters" />
+    <option name="LAST_COMMIT_MESSAGE" value="add store with getters" />
   </component>
 </project>
