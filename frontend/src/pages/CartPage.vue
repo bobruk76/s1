@@ -26,54 +26,7 @@
       <form class="cart__form form" action="#" method="POST">
         <div class="cart__field">
           <ul class="cart__list">
-
-            <li class="cart__item product"
-                v-for="item in cproducts"
-                :key="item.productId"
-            >
-              <div class="product__pic">
-                <img :src="item.product.img" width="120" height="120"
-                     :alt="item.product.title">
-              </div>
-              <h3 class="product__title">
-                {{ item.product.title }}
-              </h3>
-              <span class="product__code">
-                Артикул: {{ item.productId }}}
-              </span>
-
-              <div class="product__counter form__counter">
-                <button type="button" aria-label="Убрать один товар"
-                        @click.prevent="discrement(item.productId)">
-                  <svg width="10" height="10" fill="currentColor">
-                    <use xlink:href="#icon-minus"></use>
-                  </svg>
-                </button>
-
-                <input type="text" :value="item.amount" name="count">
-
-                <button type="button" aria-label="Добавить один товар"
-                @click.prevent="increment(item.productId)">
-                  <svg width="10" height="10" fill="currentColor">
-                    <use xlink:href="#icon-plus"></use>
-                  </svg>
-                </button>
-              </div>
-
-              <b class="product__price">
-                {{ item.totalPrice | numberFormat }} ₽
-              </b>
-
-              <button class="product__del button-del"
-                      type="button" aria-label="Удалить товар из корзины"
-                      @click.prevent="remove(item.productId)"
-              >
-                <svg width="20" height="20" fill="currentColor">
-                  <use xlink:href="#icon-close"></use>
-                </svg>
-              </button>
-            </li>
-
+            <CartItem v-for="item in cproducts" :key="item.productId" :item="item"></CartItem>
           </ul>
         </div>
 
@@ -97,27 +50,13 @@
 <script>
 import { mapGetters } from 'vuex';
 import numberFormat from '@/helpers/numberFormat';
+import CartItem from '@/components/CartItem.vue';
 
 export default {
   filters: {
     numberFormat,
   },
-
-  methods: {
-    increment(productId) {
-      this.$store.commit('incrementProduct', { productId });
-    },
-
-    discrement(productId) {
-      this.$store.commit('discrementProduct', { productId });
-    },
-
-    remove(productId) {
-      this.$store.commit('removeProduct', { productId });
-    },
-
-  },
-
+  components: { CartItem },
   computed: {
     ...mapGetters({
       products: 'cartDetailsProducts',
@@ -135,7 +74,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-
-</style>

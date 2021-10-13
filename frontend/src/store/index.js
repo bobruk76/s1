@@ -17,12 +17,12 @@ export default new Vuex.Store({
       state.cartProducts.splice(index, 1);
     },
 
-    incrementProduct(state, { productId }) {
+    incrementProduct(state, productId) {
       const Item = state.cartProducts.find((item) => item.productId === productId);
       Item.amount += 1;
     },
 
-    discrementProduct(state, { productId }) {
+    decrementProduct(state, productId) {
       const Item = state.cartProducts.find((item) => item.productId === productId);
       if (Item.amount > 1) {
         Item.amount -= 1;
@@ -35,6 +35,13 @@ export default new Vuex.Store({
         Item.amount += amount;
       } else {
         state.cartProducts.push({ productId, amount });
+      }
+    },
+
+    changeAmountProduct(state, { productId, amount }) {
+      const Item = state.cartProducts.find((item) => item.productId === productId);
+      if (Item) {
+        Item.amount = amount;
       }
     },
   },
