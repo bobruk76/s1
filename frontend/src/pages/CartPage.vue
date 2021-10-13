@@ -3,9 +3,9 @@
     <div class="content__top">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
-          <a class="breadcrumbs__link" href="index.html">
+          <router-link class="breadcrumbs__link" :to="{name: 'main'}">
             Каталог
-          </a>
+          </router-link>
         </li>
         <li class="breadcrumbs__item">
           <a class="breadcrumbs__link">
@@ -18,7 +18,7 @@
         Корзина
       </h1>
       <span class="content__info">
-        3 товара
+        {{ $store.state.cartProducts.length }}
       </span>
     </div>
 
@@ -43,7 +43,8 @@
               </span>
 
               <div class="product__counter form__counter">
-                <button type="button" aria-label="Убрать один товар">
+                <button type="button" aria-label="Убрать один товар"
+                        @click.prevent="discrement(item.productId)">
                   <svg width="10" height="10" fill="currentColor">
                     <use xlink:href="#icon-minus"></use>
                   </svg>
@@ -51,7 +52,8 @@
 
                 <input type="text" :value="item.amount" name="count">
 
-                <button type="button" aria-label="Добавить один товар">
+                <button type="button" aria-label="Добавить один товар"
+                @click.prevent="increment(item.productId)">
                   <svg width="10" height="10" fill="currentColor">
                     <use xlink:href="#icon-plus"></use>
                   </svg>
@@ -63,7 +65,9 @@
               </b>
 
               <button class="product__del button-del"
-                      type="button" aria-label="Удалить товар из корзины">
+                      type="button" aria-label="Удалить товар из корзины"
+                      @click.prevent="remove(item.productId)"
+              >
                 <svg width="20" height="20" fill="currentColor">
                   <use xlink:href="#icon-close"></use>
                 </svg>
@@ -98,6 +102,22 @@ export default {
   filters: {
     numberFormat,
   },
+
+  methods: {
+    increment(productId) {
+      this.$store.commit('incrementProduct', { productId });
+    },
+
+    discrement(productId) {
+      this.$store.commit('discrementProduct', { productId });
+    },
+
+    remove(productId) {
+      this.$store.commit('removeProduct', { productId });
+    },
+
+  },
+
   computed: {
     ...mapGetters({
       products: 'cartDetailsProducts',

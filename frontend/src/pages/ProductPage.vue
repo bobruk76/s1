@@ -87,7 +87,7 @@
                 </button>
               </div>
 
-              <button class="button button--primery" type="submit" @click="addToCart">
+              <button class="button button--primery" type="submit" @click.prevent="addToCart">
                 В корзину
               </button>
             </div>

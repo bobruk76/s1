@@ -24,7 +24,9 @@ export default new Vuex.Store({
 
     discrementProduct(state, { productId }) {
       const Item = state.cartProducts.find((item) => item.productId === productId);
-      Item.amount += 1;
+      if (Item.amount > 1) {
+        Item.amount -= 1;
+      }
     },
 
     addProductToCart(state, { productId, amount }) {
@@ -32,7 +34,7 @@ export default new Vuex.Store({
       if (Item) {
         Item.amount += amount;
       } else {
-        state.cartProducts.push(productId, amount);
+        state.cartProducts.push({ productId, amount });
       }
     },
   },
