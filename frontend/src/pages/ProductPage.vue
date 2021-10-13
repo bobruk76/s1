@@ -72,7 +72,7 @@
 
             <div class="item__row">
               <div class="form__counter">
-                <button type="button" aria-label="Убрать один товар">
+                <button type="button" aria-label="Убрать один товар" @click="discrement">
                   <svg width="12" height="12" fill="currentColor">
                     <use xlink:href="#icon-minus"></use>
                   </svg>
@@ -87,7 +87,7 @@
                 </button>
               </div>
 
-              <button class="button button--primery" type="submit">
+              <button class="button button--primery" type="submit" @click="addToCart">
                 В корзину
               </button>
             </div>
@@ -161,7 +161,9 @@ export default {
     },
 
     discrement() {
-      this.productAmount = (this.productAmount > 1) ?? this.productAmount - 1;
+      if (this.productAmount > 1) {
+        this.productAmount -= 1;
+      }
     },
 
   },

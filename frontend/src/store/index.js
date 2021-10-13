@@ -11,6 +11,22 @@ export default new Vuex.Store({
     ],
   },
   mutations: {
+    removeProduct(state, { productId }) {
+      const Item = state.cartProducts.find((item) => item.productId === productId);
+      const index = state.cartProducts.indexOf(Item);
+      state.cartProducts.splice(index, 1);
+    },
+
+    incrementProduct(state, { productId }) {
+      const Item = state.cartProducts.find((item) => item.productId === productId);
+      Item.amount += 1;
+    },
+
+    discrementProduct(state, { productId }) {
+      const Item = state.cartProducts.find((item) => item.productId === productId);
+      Item.amount += 1;
+    },
+
     addProductToCart(state, { productId, amount }) {
       const Item = state.cartProducts.find((item) => item.productId === productId);
       if (Item) {
