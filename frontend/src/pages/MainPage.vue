@@ -35,8 +35,9 @@
 </template>
 
 <script>
-import products from '@/data/products';
-import ProductList from '@/components/ProductList/template.vue';
+// import products from '@/data/products';
+import axios from 'axios';
+import ProductList from '@/components/ProductList.vue';
 import BasePaginate from '@/components/BasePaginate/template.vue';
 import ProductFilter from '@/components/ProductFilter/template.vue';
 
@@ -52,12 +53,13 @@ export default {
       filterPriceTo: 0,
       colorId: 0,
       filterCategoryId: 0,
+      productsData: null,
     };
   },
 
   computed: {
     filterProducts() {
-      let filterProducts = products;
+      let filterProducts = this.products;
 
       filterProducts = filterProducts.filter((product) => (
         (product.categoryId === this.filterCategoryId || this.filterCategoryId === 0)
@@ -69,17 +71,33 @@ export default {
     },
 
     countProductPages() {
-      return Math.ceil(this.filterProducts.length / this.countPerPage);
+      // return Math.ceil(this.filterProducts.length / this.countPerPage);
+      return this.productsData ? this.productsData.pagination.total : 0;
     },
 
     products() {
-      const offset = (this.page - 1) * this.countPerPage;
-      return this.filterProducts.slice(offset, offset + this.countPerPage);
+      // const offset = (this.page - 1) * this.countPerPage;
+      // return this.filterProducts.slice(offset, offset + this.countPerPage);
+      return this.productsData ? this.productsData.items.map((item) => ({
+        ...item,
+        img: item.image.file.url,
+      })) : [];
     },
   },
 
+  methods: {
+    getProducts() {
+      const url = `https://vue-study.skillbox.cc/api/products?page=${this.page}&limit=${this.countPerPage}`;
+      axios.get(url).then(
+        (response) => {
+          this.productsData = response.data;
+        },
+      );
+    },
+  },
   created() {
     this.filterCategoryId = this.$route.params.categoryId || 0;
+    this.getProducts();
   },
 
 };
