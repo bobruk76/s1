@@ -18,7 +18,7 @@
         Корзина
       </h1>
       <span class="content__info">
-        {{ $store.state.cartProducts.length }}
+        Количество товаров:{{ totalAmounts }}
       </span>
     </div>
 
@@ -70,6 +70,10 @@ export default {
 
     totalSum() {
       return this.cproducts.reduce((sum, item) => sum + item.totalPrice, 0);
+    },
+
+    totalAmounts() {
+      return this.cproducts.reduce((sum, item) => sum + item.amount, 0);
     },
   },
 };

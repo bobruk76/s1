@@ -65,7 +65,11 @@ export default {
         return this.item.amount;
       },
       set(value) {
-        this.$store.commit('changeAmountProduct', { productId: this.item.productId, amount: value });
+        if (value > 0) {
+          this.$store.commit('changeAmountProduct', { productId: this.item.productId, amount: value });
+        } else {
+          this.removeProduct(this.item.productId);
+        }
       },
     },
   },
