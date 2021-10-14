@@ -46,19 +46,15 @@
               <legend class="form__legend">Цвет:</legend>
               <ul class="colors">
 
-                <li class="colors__item"
-                    v-for="item in colors"
-                    :key="item.id"
-                    v-show="product.colorIdList.includes(item.id)"
-                >
+                <li class="colors__item" v-for="color in product.colors" :key="color.id">
                   <label class="colors__label">
                     <input class="colors__radio sr-only"
                            type="radio"
                            name="color-item"
-                           :value="item.value"
+                           :value="color.title"
                     >
                     <span class="colors__value"
-                          :style="'background-color: ' + item.value + ';'">
+                          :style="'background-color: ' + color.code + ';'">
                     </span>
                   </label>
                 </li>
@@ -136,16 +132,17 @@
 </template>
 
 <script>
-import colors from '@/data/colors';
-import products from '@/data/products';
-import categories from '@/data/categories';
+import axios from 'axios';
+// import colors from '@/data/colors';
+// import products from '@/data/products';
+// import categories from '@/data/categories';
 import numberFormat from '@/helpers/numberFormat';
 
 export default {
   data() {
     return {
-      colors,
       productAmount: 1,
+      productData: null,
     };
   },
   methods: {
@@ -166,17 +163,30 @@ export default {
       }
     },
 
+    loadProduct() {
+      const url = `https://vue-study.skillbox.cc/api/products/${this.$route.params.id}`;
+      axios.get(url).then((response) => {
+        this.productData = response.data;
+      });
+    },
   },
   filters: {
     numberFormat,
   },
   computed: {
     product() {
-      return products.find((item) => item.id === +this.$route.params.id);
+      // return products.find((item) => item.id === +this.$route.params.id);
+      return this.productData ? ((item = this.productData) => ({
+        ...item,
+        img: item.image.file.url,
+      }))() : {};
     },
     category() {
-      return categories.find((item) => item.id === this.product.categoryId);
+      return this.productData ? this.product.category : 0;
     },
+  },
+  created() {
+    this.loadProduct();
   },
 };
 </script>
