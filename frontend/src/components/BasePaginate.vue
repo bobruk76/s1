@@ -1,5 +1,5 @@
 <template>
-      <ul class="catalog__pagination pagination">
+<ul class="catalog__pagination pagination">
         <li class="pagination__item">
           <a href="#" class="pagination__link pagination__link--arrow"
              :class="{'pagination__link--disabled' : page == 1}"
@@ -32,4 +32,23 @@
       </ul>
 </template>
 
-<script src="./index.js"></script>
+<script>
+export default {
+  model: {
+    prop: 'page',
+    event: 'paginate',
+  },
+
+  props: ['page', 'countPages'],
+
+  methods: {
+    paginate(page) {
+      if ((page >= 1) && (page <= this.countPages)) {
+        this.$emit('paginate', page);
+      }
+    },
+  },
+  computed: {
+  },
+};
+</script>

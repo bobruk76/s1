@@ -38,7 +38,7 @@
 // import products from '@/data/products';
 import axios from 'axios';
 import ProductList from '@/components/ProductList.vue';
-import BasePaginate from '@/components/BasePaginate/template.vue';
+import BasePaginate from '@/components/BasePaginate.vue';
 import ProductFilter from '@/components/ProductFilter/template.vue';
 
 export default {
@@ -70,9 +70,12 @@ export default {
       return filterProducts;
     },
 
-    countProductPages() {
-      // return Math.ceil(this.filterProducts.length / this.countPerPage);
+    countProducts() {
       return this.productsData ? this.productsData.pagination.total : 0;
+    },
+
+    countProductPages() {
+      return Math.ceil(this.countProducts / this.countPerPage);
     },
 
     products() {
@@ -95,6 +98,12 @@ export default {
       );
     },
   },
+  watch: {
+    page() {
+      this.getProducts();
+    },
+  },
+
   created() {
     this.filterCategoryId = this.$route.params.categoryId || 0;
     this.getProducts();
