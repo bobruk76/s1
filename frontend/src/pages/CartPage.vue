@@ -26,7 +26,7 @@
       <form class="cart__form form" action="#" method="POST">
         <div class="cart__field">
           <ul class="cart__list">
-            <CartItem v-for="item in cproducts" :key="item.productId" :item="item"></CartItem>
+            <CartItem v-for="item in products" :key="item.productId" :item="item"></CartItem>
           </ul>
         </div>
 
@@ -61,21 +61,10 @@ export default {
     ...mapGetters({
       products: 'cartDetailsProducts',
       totalAmounts: 'cartTotalAmounts',
+      totalSum: 'cartTotalSum',
     }),
-    cproducts() {
-      return this.products.map((item) => ({
-        ...item,
-        totalPrice: 0,
-        // totalPrice: item.amount * item.product.price,
-      }));
-    },
-
-    totalSum() {
-      return 0;
-      // return this.cproducts.reduce((sum, item) => sum + item.totalPrice, 0);
-    },
-
   },
+
   created() {
     this.$store.dispatch('loadProducts');
   },

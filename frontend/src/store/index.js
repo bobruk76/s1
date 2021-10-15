@@ -47,7 +47,10 @@ export default new Vuex.Store({
     },
 
     updateProducts(state, products) {
-      state.products = products;
+      state.products = products.map((item) => ({
+        ...item,
+        img: item.image.file.url,
+      }));
     },
   },
 
@@ -67,11 +70,18 @@ export default new Vuex.Store({
       return state.cartProducts.map((item) => ({
         ...item,
         product: state.products.find((product) => product.id === item.productId),
+      })).map((item) => ({
+        ...item,
+        totalPrice: item.amount * item.product.price,
       }));
     },
 
     cartTotalAmounts(state) {
       return state.cartProducts.reduce((count, item) => count + item.amount, 0);
+    },
+
+    cartTotalSum(state, getters) {
+      return getters.cartDetailsProducts.reduce((sum, item) => sum + item.totalPrice, 0);
     },
   },
 });
