@@ -60,21 +60,24 @@ export default {
   computed: {
     ...mapGetters({
       products: 'cartDetailsProducts',
+      totalAmounts: 'cartTotalAmounts',
     }),
     cproducts() {
       return this.products.map((item) => ({
         ...item,
-        totalPrice: item.amount * item.product.price,
+        totalPrice: 0,
+        // totalPrice: item.amount * item.product.price,
       }));
     },
 
     totalSum() {
-      return this.cproducts.reduce((sum, item) => sum + item.totalPrice, 0);
+      return 0;
+      // return this.cproducts.reduce((sum, item) => sum + item.totalPrice, 0);
     },
 
-    totalAmounts() {
-      return this.cproducts.reduce((sum, item) => sum + item.amount, 0);
-    },
+  },
+  created() {
+    this.$store.dispatch('loadProducts');
   },
 };
 </script>

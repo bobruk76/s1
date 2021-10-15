@@ -147,10 +147,12 @@ export default {
   },
   methods: {
     addToCart() {
-      this.$store.commit(
-        'addProductToCart',
-        { productId: this.product.id, amount: this.productAmount },
-      );
+      if (this.productAmount > 0) {
+        this.$store.commit(
+          'addProductToCart',
+          { productId: this.product.id, amount: this.productAmount },
+        );
+      }
     },
 
     increment() {

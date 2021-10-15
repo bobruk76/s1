@@ -72,7 +72,7 @@
             <use xlink:href="#icon-cart"></use>
           </svg>
           <span class="header__count"
-                aria-label="Количество товаров">{{ $store.state.cartProducts.length }}</span>
+                aria-label="Количество товаров">{{ cartTotalAmounts }}</span>
         </router-link>
       </div>
     </header>
@@ -80,7 +80,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'Header',
+  computed: {
+    ...mapGetters(['cartTotalAmounts']),
+  },
 };
 </script>

@@ -8,7 +8,7 @@
       {{ item.product.title }}
     </h3>
     <span class="product__code">
-                Артикул: {{ item.productId }}}
+                Артикул: {{ item.productId }}
               </span>
 
     <div class="product__counter form__counter">
