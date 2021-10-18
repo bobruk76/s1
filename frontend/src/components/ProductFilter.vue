@@ -1,5 +1,4 @@
 <template>
-
   <aside class="filter">
     <h2 class="filter__title">Фильтры</h2>
 
@@ -46,7 +45,7 @@
                 :value="item.id"
                 v-model.number="currentColorId"
               >
-              <span class="colors__value" :style="'background-color: ' + item.value + ';'">
+              <span class="colors__value" :style="'background-color: ' + item.code + ';'">
                   </span>
             </label>
           </li>
@@ -125,7 +124,90 @@
       </button>
     </form>
   </aside>
-
 </template>
 
-<script src="./index.js"></script>
+<script>
+// import colors from '@/data/colors';
+// import categories from '@/data/categories';
+import axios from 'axios';
+import { API_BASE_URL } from '@/config';
+
+export default {
+  props: ['priceFrom', 'priceTo', 'categoryId', 'page', 'colorId'],
+
+  data() {
+    return {
+      currentPriceFrom: 0,
+      currentPriceTo: 0,
+      currentCategoryId: 0,
+      currentColorId: 0,
+      colorsData: null,
+      categoriesData: null,
+    };
+  },
+  methods: {
+    submit() {
+      this.$emit('update:page', 1);
+      this.$emit('update:priceFrom', this.currentPriceFrom);
+      this.$emit('update:priceTo', this.currentPriceTo);
+      this.$emit('update:categoryId', this.currentCategoryId);
+      this.$emit('update:colorId', this.currentColorId);
+    },
+
+    reset() {
+      this.$emit('update:page', 1);
+      this.$emit('update:priceFrom', 0);
+      this.$emit('update:priceTo', 0);
+      this.$emit('update:categoryId', 0);
+      this.$emit('update:colorId', 0);
+    },
+
+    loadCategories() {
+      axios.get(API_BASE_URL + '/productCategories').then(
+        (response) => {
+          this.categoriesData = response.data;
+        },
+      );
+    },
+
+    loadColors() {
+      axios.get(API_BASE_URL + '/colors').then(
+        (response) => {
+          this.colorsData = response.data;
+        },
+      );
+    },
+  },
+  watch: {
+    priceFrom(value) {
+      this.currentPriceFrom = value;
+    },
+    priceTo(value) {
+      this.currentPriceTo = value;
+    },
+    categoryId(value) {
+      this.currentCategoryId = value;
+    },
+  },
+
+  computed: {
+    categories() {
+      return this.categoriesData ? this.categoriesData.items : [];
+    },
+
+    colors() {
+      return this.colorsData ? this.colorsData.items : [];
+    },
+  },
+
+  created() {
+    this.currentCategoryId = this.categoryId;
+    this.loadCategories();
+    this.loadColors();
+  },
+};
+</script>
+
+<style scoped>
+
+</style>

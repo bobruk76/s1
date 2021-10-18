@@ -39,7 +39,7 @@
 import axios from 'axios';
 import ProductList from '@/components/ProductList.vue';
 import BasePaginate from '@/components/BasePaginate.vue';
-import ProductFilter from '@/components/ProductFilter/template.vue';
+import ProductFilter from '@/components/ProductFilter.vue';
 
 export default {
   props: ['pageParams'],
