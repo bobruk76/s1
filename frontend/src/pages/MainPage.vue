@@ -105,7 +105,7 @@ export default {
         (response) => {
           this.productsData = response.data;
         },
-      ));
+      ), 0);
     },
   },
   watch: {

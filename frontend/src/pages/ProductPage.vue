@@ -184,11 +184,18 @@ export default {
       }))() : {};
     },
     category() {
-      return this.productData ? this.product.category : 0;
+      return this.productData ? this.product.category : {};
     },
   },
-  created() {
-    this.loadProduct();
+
+  watch: {
+    '$route.params.id': {
+      handler() {
+        this.loadProduct();
+      },
+      immediate: true,
+    },
   },
+
 };
 </script>
