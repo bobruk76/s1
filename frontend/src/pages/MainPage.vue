@@ -40,6 +40,7 @@ import axios from 'axios';
 import ProductList from '@/components/ProductList.vue';
 import BasePaginate from '@/components/BasePaginate.vue';
 import ProductFilter from '@/components/ProductFilter.vue';
+import { API_BASE_URL } from '@/config';
 
 export default {
   props: ['pageParams'],
@@ -58,17 +59,17 @@ export default {
   },
 
   computed: {
-    filterProducts() {
-      let filterProducts = this.products;
-
-      filterProducts = filterProducts.filter((product) => (
-        (product.categoryId === this.filterCategoryId || this.filterCategoryId === 0)
-        && this.filterPriceFrom <= product.price
-        && (product.colorIdList.includes(this.colorId) || this.colorId === 0)
-        && (this.filterPriceTo >= product.price || this.filterPriceTo === 0)));
-
-      return filterProducts;
-    },
+    // filterProducts() {
+    //   let filterProducts = this.products;
+    //
+    //   filterProducts = filterProducts.filter((product) => (
+    //     (product.categoryId === this.filterCategoryId || this.filterCategoryId === 0)
+    //     && this.filterPriceFrom <= product.price
+    //     && (product.colorIdList.includes(this.colorId) || this.colorId === 0)
+    //     && (this.filterPriceTo >= product.price || this.filterPriceTo === 0)));
+    //
+    //   return filterProducts;
+    // },
 
     countProducts() {
       return this.productsData ? this.productsData.pagination.total : 0;
@@ -90,18 +91,44 @@ export default {
 
   methods: {
     getProducts() {
-      const url = `https://vue-study.skillbox.cc/api/products?page=${this.page}&limit=${this.countPerPage}`;
-      axios.get(url).then(
+      clearTimeout(this.timeProductLoad);
+      this.timeProductLoad = setTimeout(() => axios.get(`${API_BASE_URL}/products`, {
+        params: {
+          page: this.page,
+          limit: this.countPerPage,
+          categoryId: this.filterCategoryId,
+          colorId: this.colorId,
+          minPrice: this.filterPriceFrom,
+          maxPrice: this.filterPriceTo,
+        },
+      }).then(
         (response) => {
           this.productsData = response.data;
         },
-      );
+      ));
     },
   },
   watch: {
     page() {
       this.getProducts();
     },
+
+    filterCategoryId() {
+      this.getProducts();
+    },
+
+    colorId() {
+      this.getProducts();
+    },
+
+    filterPriceFrom() {
+      this.getProducts();
+    },
+
+    filterPriceTo() {
+      this.getProducts();
+    },
+
   },
 
   created() {

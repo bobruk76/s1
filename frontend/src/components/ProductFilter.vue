@@ -163,7 +163,7 @@ export default {
     },
 
     loadCategories() {
-      axios.get(API_BASE_URL + '/productCategories').then(
+      axios.get(`${API_BASE_URL}/productCategories`).then(
         (response) => {
           this.categoriesData = response.data;
         },
@@ -171,7 +171,7 @@ export default {
     },
 
     loadColors() {
-      axios.get(API_BASE_URL + '/colors').then(
+      axios.get(`${API_BASE_URL}/colors`).then(
         (response) => {
           this.colorsData = response.data;
         },
