@@ -71,7 +71,6 @@ export default {
 
   created() {
     this.loadBaskets();
-    this.$store.dispatch('loadProducts');
   },
 };
 </script>

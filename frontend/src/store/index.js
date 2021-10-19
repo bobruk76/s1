@@ -9,7 +9,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     cartProducts: null,
-    products: [],
     userKey: null,
   },
 
@@ -26,6 +25,7 @@ export default new Vuex.Store({
 
     updateUserKey(state, userKey) {
       state.userKey = userKey;
+      localStorage.setItem('userKey', userKey);
     },
 
     removeProduct(state, { productId }) {
@@ -78,8 +78,8 @@ export default new Vuex.Store({
           if (!context.state.userKey) {
             context.commit('updateUserKey', response.data.user.accessKey);
           }
+
           context.commit('updateCartProducts', response.data.items);
-          // context.commit('syncCartProducts', response.data.items);
         },
       );
     },
@@ -87,15 +87,17 @@ export default new Vuex.Store({
 
   getters: {
     cartDetailsProducts(state) {
-      return state.cartProducts;
+      return state.cartProducts ? state.cartProducts : [];
     },
 
     cartTotalAmounts(state) {
-      return state.cartProducts.reduce((count, item) => count + item.amount, 0);
+      return state.cartProducts ? state.cartProducts.reduce((count, item) => count
+        + item.amount, 0) : 0;
     },
 
     cartTotalSum(state) {
-      return state.cartProducts.reduce((sum, item) => sum + item.totalPrice, 0);
+      return state.cartProducts ? state.cartProducts.reduce((sum, item) => sum
+        + item.totalPrice, 0) : 0;
     },
   },
 });
