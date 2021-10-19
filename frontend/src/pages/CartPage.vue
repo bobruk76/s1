@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import numberFormat from '@/helpers/numberFormat';
 import CartItem from '@/components/CartItem.vue';
 
@@ -65,7 +65,12 @@ export default {
     }),
   },
 
+  methods: {
+    ...mapActions(['loadBaskets']),
+  },
+
   created() {
+    this.loadBaskets();
     this.$store.dispatch('loadProducts');
   },
 };

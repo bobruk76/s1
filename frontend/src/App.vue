@@ -15,11 +15,19 @@
 </style>
 
 <script>
+import { mapActions } from 'vuex';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
 
 export default {
   components: { Header, Footer },
+  methods: {
+    ...mapActions(['loadBaskets']),
+  },
+
+  created() {
+    this.loadBaskets();
+  },
 
 };
 

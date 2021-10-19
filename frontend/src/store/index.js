@@ -1,17 +1,33 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+import { API_BASE_URL } from '@/config';
 // import products from '@/data/products';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    cartProducts: [{ productId: 3, amount: 5 }],
+    cartProducts: null,
     products: [],
+    userKey: null,
   },
 
   mutations: {
+    updateCartProducts(state, cartProducts) {
+      state.cartProducts = cartProducts.map((item) => ({
+        ...item,
+        productId: item.product.id,
+        amount: item.quantity,
+        totalPrice: item.quantity * item.price,
+        img: item.product.image.file.url,
+      }));
+    },
+
+    updateUserKey(state, userKey) {
+      state.userKey = userKey;
+    },
+
     removeProduct(state, { productId }) {
       const Item = state.cartProducts.find((item) => item.productId === productId);
       const index = state.cartProducts.indexOf(Item);
@@ -46,20 +62,24 @@ export default new Vuex.Store({
       }
     },
 
-    updateProducts(state, products) {
-      state.products = products.map((item) => ({
-        ...item,
-        img: item.image.file.url,
-      }));
-    },
   },
 
   actions: {
-    loadProducts({ commit }) {
-      const url = 'https://vue-study.skillbox.cc/api/products';
-      axios.get(url).then(
+    loadBaskets(context) {
+      if ('userKey' in localStorage) {
+        context.commit('updateUserKey', localStorage.getItem('userKey'));
+      }
+      return axios.get(`${API_BASE_URL}/baskets`, {
+        params: {
+          userAccessKey: context.state.userKey,
+        },
+      }).then(
         (response) => {
-          commit('updateProducts', response.data.items);
+          if (!context.state.userKey) {
+            context.commit('updateUserKey', response.data.user.accessKey);
+          }
+          context.commit('updateCartProducts', response.data.items);
+          // context.commit('syncCartProducts', response.data.items);
         },
       );
     },
@@ -67,21 +87,15 @@ export default new Vuex.Store({
 
   getters: {
     cartDetailsProducts(state) {
-      return state.cartProducts.map((item) => ({
-        ...item,
-        product: state.products.find((product) => product.id === item.productId),
-      })).map((item) => ({
-        ...item,
-        totalPrice: item.amount * item.product.price,
-      }));
+      return state.cartProducts;
     },
 
     cartTotalAmounts(state) {
       return state.cartProducts.reduce((count, item) => count + item.amount, 0);
     },
 
-    cartTotalSum(state, getters) {
-      return getters.cartDetailsProducts.reduce((sum, item) => sum + item.totalPrice, 0);
+    cartTotalSum(state) {
+      return state.cartProducts.reduce((sum, item) => sum + item.totalPrice, 0);
     },
   },
 });
