@@ -87,7 +87,10 @@
                 В корзину
               </button>
            </div>
-           <div v-show="productAdded">Товар успешно добавлен!</div>
+            <b-alert v-show="productAdded" show variant="success">
+              Товар успешно добавлен в корзину!
+            </b-alert>
+
           </form>
         </div>
       </div>
