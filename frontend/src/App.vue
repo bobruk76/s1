@@ -1,6 +1,8 @@
 <template>
   <body>
 
+  <Preloader v-show="preloaderActive"></Preloader>
+
   <Header></Header>
 
   <router-view></router-view>
@@ -15,14 +17,18 @@
 </style>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
+import Preloader from '@/components/Preloader.vue';
 
 export default {
-  components: { Header, Footer },
+  components: { Header, Footer, Preloader },
   methods: {
     ...mapActions(['loadBaskets']),
+  },
+  computed: {
+    ...mapGetters(['preloaderActive']),
   },
 
   created() {

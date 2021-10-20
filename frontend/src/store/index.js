@@ -10,9 +10,14 @@ export default new Vuex.Store({
   state: {
     cartProducts: null,
     userKey: null,
+    preloader: false,
   },
 
   mutations: {
+    preloaderChangeStatus(state, status) {
+      state.preloader = status;
+    },
+
     updateCartProducts(state, cartProducts) {
       state.cartProducts = cartProducts.map((item) => ({
         ...item,
@@ -78,18 +83,21 @@ export default new Vuex.Store({
     },
 
     addProductToCart(context, { productId, amount }) {
-      return axios.post(`${API_BASE_URL}/baskets/products`, {
-        productId,
-        quantity: amount,
-      }, {
-        params: {
-          userAccessKey: context.state.userKey,
-        },
-      }).then(
-        (response) => {
-          context.commit('updateCartProducts', response.data.items);
-        },
-      );
+      return new Promise(((resolve) => setTimeout(resolve, 2500)))
+        .then(() => (
+          axios.post(`${API_BASE_URL}/baskets/products`, {
+            productId,
+            quantity: amount,
+          }, {
+            params: {
+              userAccessKey: context.state.userKey,
+            },
+          }).then(
+            (response) => {
+              context.commit('updateCartProducts', response.data.items);
+            },
+          )
+        ));
     },
 
     removeProduct(context, productId) {
@@ -110,6 +118,10 @@ export default new Vuex.Store({
   },
 
   getters: {
+    preloaderActive(state) {
+      return state.preloader;
+    },
+
     cartDetailsProducts(state) {
       return state.cartProducts ? state.cartProducts : [];
     },

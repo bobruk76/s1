@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <main class="content container">
     <div class="content__top">
       <ul class="breadcrumbs">
@@ -136,7 +136,7 @@ import axios from 'axios';
 // import colors from '@/data/colors';
 // import products from '@/data/products';
 // import categories from '@/data/categories';
-import { mapActions } from 'vuex';
+import { mapActions, mapMutations } from 'vuex';
 import numberFormat from '@/helpers/numberFormat';
 
 export default {
@@ -144,17 +144,23 @@ export default {
     return {
       productAmount: 1,
       productData: null,
+      productAddSending: false,
     };
   },
   methods: {
     ...mapActions(['addProductToCart']),
+    ...mapMutations(['preloaderChangeStatus']),
 
     addToCart() {
+      this.preloaderChangeStatus(true);
       if (this.productAmount > 0) {
         this.addProductToCart({
           productId: this.product.id,
           amount: this.productAmount,
-        });
+        }).catch(() => {})
+          .then(() => {
+            this.preloaderChangeStatus(false);
+          });
       }
     },
 
