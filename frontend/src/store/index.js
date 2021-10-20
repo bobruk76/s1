@@ -36,7 +36,7 @@ export default new Vuex.Store({
     changeAmountProduct(state, { productId, amount }) {
       const Item = state.cartProducts.find((item) => item.productId === productId);
       if (Item) {
-        Item.amount = amount;
+        Item.amount = +amount;
         Item.totalPrice = Item.amount * Item.price;
       }
     },
