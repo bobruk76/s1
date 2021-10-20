@@ -1,14 +1,9 @@
 <template>
   <body>
-
-  <Preloader v-show="preloaderActive"></Preloader>
-
-  <Header></Header>
-
-  <router-view></router-view>
-
-  <Footer></Footer>
-
+    <Preloader v-show="preloaderActive"></Preloader>
+    <Header></Header>
+    <router-view></router-view>
+    <Footer></Footer>
   </body>
 </template>
 

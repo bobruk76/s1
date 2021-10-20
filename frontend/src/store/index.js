@@ -45,6 +45,7 @@ export default new Vuex.Store({
 
   actions: {
     loadBaskets(context) {
+      context.commit('preloaderChangeStatus', true);
       if ('userKey' in localStorage) {
         context.commit('updateUserKey', localStorage.getItem('userKey'));
       }
@@ -59,7 +60,15 @@ export default new Vuex.Store({
           }
           context.commit('updateCartProducts', response.data.items);
         },
-      );
+      ).catch(
+        () => {
+        },
+      )
+        .then(
+          () => {
+            context.commit('preloaderChangeStatus', false);
+          },
+        );
     },
 
     addProductToCart(context, { productId, amount }) {
