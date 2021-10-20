@@ -86,7 +86,8 @@
               <button class="button button--primery" type="submit" @click.prevent="addToCart">
                 В корзину
               </button>
-            </div>
+           </div>
+           <div v-show="productAdded">Товар успешно добавлен!</div>
           </form>
         </div>
       </div>
@@ -144,7 +145,7 @@ export default {
     return {
       productAmount: 1,
       productData: null,
-      productAddSending: false,
+      productAdded: false,
     };
   },
   methods: {
@@ -157,7 +158,10 @@ export default {
         this.addProductToCart({
           productId: this.product.id,
           amount: this.productAmount,
-        }).catch(() => {})
+        }).then(() => {
+          this.productAdded = true;
+        })
+          .catch(() => {})
           .then(() => {
             this.preloaderChangeStatus(false);
           });
