@@ -48,15 +48,6 @@ export default new Vuex.Store({
       }
     },
 
-    addProductToCart(state, { productId, amount }) {
-      const Item = state.cartProducts.find((item) => item.productId === productId);
-      if (Item) {
-        Item.amount += amount;
-      } else {
-        state.cartProducts.push({ productId, amount });
-      }
-    },
-
     changeAmountProduct(state, { productId, amount }) {
       const Item = state.cartProducts.find((item) => item.productId === productId);
       if (Item) {
@@ -93,6 +84,21 @@ export default new Vuex.Store({
       }, {
         params: {
           userAccessKey: context.state.userKey,
+        },
+      }).then(
+        (response) => {
+          context.commit('updateCartProducts', response.data.items);
+        },
+      );
+    },
+
+    removeProduct(context, productId) {
+      return axios.delete(`${API_BASE_URL}/baskets/products`, {
+        params: {
+          userAccessKey: context.state.userKey,
+        },
+        data: {
+          productId,
         },
       }).then(
         (response) => {
