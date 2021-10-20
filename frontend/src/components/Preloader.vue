@@ -10,7 +10,7 @@
 <script>
 export default {
   name: 'Preloader',
-}
+};
 </script>
 
 <style scoped>
@@ -20,6 +20,8 @@ export default {
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .dash {
