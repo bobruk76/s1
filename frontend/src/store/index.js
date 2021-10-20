@@ -36,13 +36,15 @@ export default new Vuex.Store({
 
     incrementProduct(state, productId) {
       const Item = state.cartProducts.find((item) => item.productId === productId);
-      Item.amount += 1;
+      Item.amount = +Item.amount + 1;
+      Item.totalPrice = Item.amount * Item.price;
     },
 
     decrementProduct(state, productId) {
       const Item = state.cartProducts.find((item) => item.productId === productId);
       if (Item.amount > 1) {
-        Item.amount -= 1;
+        Item.amount = +Item.amount - 1;
+        Item.totalPrice = Item.amount * Item.price;
       }
     },
 
@@ -59,6 +61,7 @@ export default new Vuex.Store({
       const Item = state.cartProducts.find((item) => item.productId === productId);
       if (Item) {
         Item.amount = amount;
+        Item.totalPrice = Item.amount * Item.price;
       }
     },
 
@@ -78,11 +81,26 @@ export default new Vuex.Store({
           if (!context.state.userKey) {
             context.commit('updateUserKey', response.data.user.accessKey);
           }
-
           context.commit('updateCartProducts', response.data.items);
         },
       );
     },
+
+    addProductToCart(context, { productId, amount }) {
+      return axios.post(`${API_BASE_URL}/baskets/products`, {
+        productId,
+        quantity: amount,
+      }, {
+        params: {
+          userAccessKey: context.state.userKey,
+        },
+      }).then(
+        (response) => {
+          context.commit('updateCartProducts', response.data.items);
+        },
+      );
+    },
+
   },
 
   getters: {

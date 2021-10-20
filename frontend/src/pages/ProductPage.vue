@@ -136,6 +136,7 @@ import axios from 'axios';
 // import colors from '@/data/colors';
 // import products from '@/data/products';
 // import categories from '@/data/categories';
+import { mapActions } from 'vuex';
 import numberFormat from '@/helpers/numberFormat';
 
 export default {
@@ -146,12 +147,14 @@ export default {
     };
   },
   methods: {
+    ...mapActions(['addProductToCart']),
+
     addToCart() {
       if (this.productAmount > 0) {
-        this.$store.commit(
-          'addProductToCart',
-          { productId: this.product.id, amount: this.productAmount },
-        );
+        this.addProductToCart({
+          productId: this.product.id,
+          amount: this.productAmount,
+        });
       }
     },
 
