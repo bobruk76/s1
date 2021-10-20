@@ -33,26 +33,6 @@ export default new Vuex.Store({
       localStorage.setItem('userKey', userKey);
     },
 
-    removeProduct(state, { productId }) {
-      const Item = state.cartProducts.find((item) => item.productId === productId);
-      const index = state.cartProducts.indexOf(Item);
-      state.cartProducts.splice(index, 1);
-    },
-
-    incrementProduct(state, productId) {
-      const Item = state.cartProducts.find((item) => item.productId === productId);
-      Item.amount = +Item.amount + 1;
-      Item.totalPrice = Item.amount * Item.price;
-    },
-
-    decrementProduct(state, productId) {
-      const Item = state.cartProducts.find((item) => item.productId === productId);
-      if (Item.amount > 1) {
-        Item.amount = +Item.amount - 1;
-        Item.totalPrice = Item.amount * Item.price;
-      }
-    },
-
     changeAmountProduct(state, { productId, amount }) {
       const Item = state.cartProducts.find((item) => item.productId === productId);
       if (Item) {
@@ -111,6 +91,21 @@ export default new Vuex.Store({
       }).then(
         (response) => {
           context.commit('updateCartProducts', response.data.items);
+        },
+      );
+    },
+
+    updateProductToCart(context, { productId, amount }) {
+      return axios.put(`${API_BASE_URL}/baskets/products`, {
+        productId,
+        quantity: amount,
+      }, {
+        params: {
+          userAccessKey: context.state.userKey,
+        },
+      }).then(
+        () => {
+          context.commit('changeAmountProduct', { productId, amount });
         },
       );
     },

@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { mapMutations, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 import numberFormat from '@/helpers/numberFormat';
 
 export default {
@@ -57,8 +57,15 @@ export default {
   filters: { numberFormat },
 
   methods: {
-    ...mapMutations(['incrementProduct', 'decrementProduct']),
-    ...mapActions(['removeProduct']),
+    // ...mapMutations(['incrementProduct', 'decrementProduct']),
+    incrementProduct() {
+      this.amount += 1;
+    },
+
+    decrementProduct() {
+      this.amount -= 1;
+    },
+    ...mapActions(['removeProduct', 'updateProductToCart']),
   },
   computed: {
     amount: {
@@ -67,7 +74,7 @@ export default {
       },
       set(value) {
         if (value > 0) {
-          this.$store.commit('changeAmountProduct', { productId: this.item.productId, amount: value });
+          this.updateProductToCart({ productId: this.item.productId, amount: value });
         } else {
           this.removeProduct(this.item.productId);
         }
