@@ -35,8 +35,8 @@
 </template>
 
 <script>
-// import products from '@/data/products';
 import axios from 'axios';
+import { mapMutations } from 'vuex';
 import ProductList from '@/components/ProductList.vue';
 import BasePaginate from '@/components/BasePaginate.vue';
 import ProductFilter from '@/components/ProductFilter.vue';
@@ -59,18 +59,6 @@ export default {
   },
 
   computed: {
-    // filterProducts() {
-    //   let filterProducts = this.products;
-    //
-    //   filterProducts = filterProducts.filter((product) => (
-    //     (product.categoryId === this.filterCategoryId || this.filterCategoryId === 0)
-    //     && this.filterPriceFrom <= product.price
-    //     && (product.colorIdList.includes(this.colorId) || this.colorId === 0)
-    //     && (this.filterPriceTo >= product.price || this.filterPriceTo === 0)));
-    //
-    //   return filterProducts;
-    // },
-
     countProducts() {
       return this.productsData ? this.productsData.pagination.total : 0;
     },
@@ -80,8 +68,6 @@ export default {
     },
 
     products() {
-      // const offset = (this.page - 1) * this.countPerPage;
-      // return this.filterProducts.slice(offset, offset + this.countPerPage);
       return this.productsData ? this.productsData.items.map((item) => ({
         ...item,
         img: item.image.file.url,
@@ -90,7 +76,10 @@ export default {
   },
 
   methods: {
+    ...mapMutations(['preloaderChangeStatus']),
+
     getProducts() {
+      this.preloaderChangeStatus(true);
       clearTimeout(this.timeProductLoad);
       this.timeProductLoad = setTimeout(() => axios.get(`${API_BASE_URL}/products`, {
         params: {
@@ -101,11 +90,19 @@ export default {
           minPrice: this.filterPriceFrom,
           maxPrice: this.filterPriceTo,
         },
-      }).then(
-        (response) => {
-          this.productsData = response.data;
-        },
-      ), 0);
+      })
+        .then(
+          (response) => {
+            this.productsData = response.data;
+          },
+        )
+        .catch(() => {
+        })
+        .then(
+          () => {
+            this.preloaderChangeStatus(false);
+          },
+        ), 2000);
     },
   },
   watch: {
