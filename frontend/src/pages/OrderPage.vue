@@ -29,12 +29,14 @@
     </div>
 
     <section class="cart">
-      <form class="cart__form form" action="#" method="POST">
+      <form class="cart__form form" method="POST"
+            @submit.prevent="sendOrder"
+      >
         <div class="cart__field">
           <div class="cart__data">
 
             <InputFormField
-              v-model="formFields.name"
+              :value="formFields.name"
               :error="formErrors.name"
               placeholder="Введите ваше полное имя"
               title="ФИО"
@@ -140,10 +142,12 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
+import axios from 'axios';
 import InputFormField from '@/components/InputFormField.vue';
 import TextareaFormField from '@/components/TextareaFormField.vue';
 import CartBlock from '@/components/CartBlock.vue';
+import { API_BASE_URL } from '@/config';
 
 export default {
   data() {
@@ -156,8 +160,40 @@ export default {
   components: { InputFormField, TextareaFormField, CartBlock },
   methods: {
     ...mapActions(['loadBaskets']),
+    ...mapActions({
+      vSendOrder: 'sendOrder',
+    }),
+    ...mapMutations(['preloaderChangeStatus', 'updateOrderId']),
+
+    sendOrder() {
+      this.preloaderChangeStatus(true);
+      return new Promise(((resolve) => setTimeout(resolve, 0)))
+        .then(() => (
+          axios.post(`${API_BASE_URL}/orders`, {
+            ...this.formFields,
+          }, {
+            params: {
+              userAccessKey: this.getUserKey,
+            },
+          }).then(
+            () => {
+
+            },
+          ).catch(
+            (error) => {
+              this.formErrors = error.response.data.error.request || {};
+            },
+          ).then(
+            () => {
+              this.preloaderChangeStatus(false);
+            },
+          )));
+    },
+
   },
+
   computed: {
+    ...mapGetters(['getUserKey']),
     ...mapGetters({
       products: 'cartDetailsProducts',
       totalAmounts: 'cartTotalAmounts',

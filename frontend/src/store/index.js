@@ -11,6 +11,7 @@ export default new Vuex.Store({
     cartProducts: null,
     userKey: null,
     preloader: false,
+    orderId: null,
   },
 
   mutations: {
@@ -33,6 +34,11 @@ export default new Vuex.Store({
       localStorage.setItem('userKey', userKey);
     },
 
+    updateOrderId(state, orderId) {
+      state.orderId = orderId;
+      localStorage.setItem('orderId', orderId);
+    },
+
     changeAmountProduct(state, { productId, amount }) {
       const Item = state.cartProducts.find((item) => item.productId === productId);
       if (Item) {
@@ -44,6 +50,32 @@ export default new Vuex.Store({
   },
 
   actions: {
+
+    sendOrder(context) {
+      context.commit('preloaderChangeStatus', true);
+      return new Promise(((resolve) => setTimeout(resolve, 2500)))
+        .then(() => (
+          axios.post(`${API_BASE_URL}/orders`, {
+            // ...formFields,
+          }, {
+            params: {
+              userAccessKey: context.state.userKey,
+            },
+          }).then(
+            (response) => {
+              context.commit('updateOrderId', response.data.orderId);
+            },
+          ).catch(
+            () => {
+              // formErrors = error.request.errors;
+            },
+          ).then(
+            () => {
+              context.commit('preloaderChangeStatus', false);
+            },
+          )));
+    },
+
     loadBaskets(context) {
       context.commit('preloaderChangeStatus', true);
       if ('userKey' in localStorage) {
@@ -122,6 +154,10 @@ export default new Vuex.Store({
   },
 
   getters: {
+    getUserKey(state) {
+      return state.userKey;
+    },
+
     preloaderActive(state) {
       return state.preloader;
     },
