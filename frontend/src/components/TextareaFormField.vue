@@ -1,6 +1,10 @@
 <template>
   <BaseFormField :title="title" :placeholder="placeholder" :error="error">
-    <input class="form__input" v-model="value" :type="type" :name="name" :placeholder="placeholder">
+    <textarea class="form__input form__input--area"
+              v-model="value" :name="name" :placeholder="placeholder"
+    >
+    </textarea>
+    <span class="form__value">{{ title }}</span>
   </BaseFormField>
 </template>
 
@@ -9,11 +13,5 @@ import formFieldMixin from '@/mixins/formFieldMixin';
 
 export default {
   mixins: [formFieldMixin],
-  props: [
-    {
-      name: 'type',
-      default: 'text',
-    },
-  ],
 };
 </script>

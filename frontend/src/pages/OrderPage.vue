@@ -3,14 +3,14 @@
     <div class="content__top">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
-          <a class="breadcrumbs__link" href="index.html">
+          <router-link class="breadcrumbs__link" :to="{name: 'main'}">
             Каталог
-          </a>
+          </router-link>
         </li>
         <li class="breadcrumbs__item">
-          <a class="breadcrumbs__link" href="cart.html">
+          <router-link class="breadcrumbs__link" :to="{name: 'cart'}">
             Корзина
-          </a>
+          </router-link>
         </li>
         <li class="breadcrumbs__item">
           <a class="breadcrumbs__link">
@@ -22,8 +22,9 @@
       <h1 class="content__title">
         Корзина
       </h1>
+
       <span class="content__info">
-        3 товара
+        Количество товаров:{{ totalAmounts }}
       </span>
     </div>
 
@@ -31,38 +32,49 @@
       <form class="cart__form form" action="#" method="POST">
         <div class="cart__field">
           <div class="cart__data">
+
             <InputFormField
-              value="formFields.name"
-              error="formErrors.name"
+              v-model="formFields.name"
+              :error="formErrors.name"
               placeholder="Введите ваше полное имя"
               title="ФИО"
             >
             </InputFormField>
-            <label class="form__label">
-              <input class="form__input" type="text" name="name" placeholder="Введите ваше полное имя">
-              <span class="form__value">ФИО</span>
-            </label>
 
-            <label class="form__label">
-              <input class="form__input" type="text" name="address" placeholder="Введите ваш адрес">
-              <span class="form__value">Адрес доставки</span>
-            </label>
+            <InputFormField
+              v-model="formFields.address"
+              :error="formErrors.address"
+              placeholder="Введите ваш адрес"
+              title="Адрес доставки"
+            >
+            </InputFormField>
 
-            <label class="form__label">
-              <input class="form__input" type="tel" name="phone" placeholder="Введите ваш телефон">
-              <span class="form__value">Телефон</span>
-              <span class="form__error">Неверный формат телефона</span>
-            </label>
+            <InputFormField
+              v-model="formFields.phone"
+              :error="formErrors.phone"
+              placeholder="Введите ваш телефон"
+              title="Телефон"
+              type="tel"
+            >
+            </InputFormField>
 
-            <label class="form__label">
-              <input class="form__input" type="email" name="email" placeholder="Введи ваш Email">
-              <span class="form__value">Email</span>
-            </label>
+            <InputFormField
+              v-model="formFields.email"
+              :error="formErrors.email"
+              placeholder="Введи ваш Email"
+              title="Email"
+              type="email"
+            >
+            </InputFormField>
 
-            <label class="form__label">
-              <textarea class="form__input form__input--area" name="comments" placeholder="Ваши пожелания"></textarea>
-              <span class="form__value">Комментарий к заказу</span>
-            </label>
+            <TextareaFormField
+              v-model="formFields.comments"
+              :error="formErrors.comments"
+              placeholder="Ваши пожелания"
+              title="Комментарий к заказу"
+            >
+            </TextareaFormField>
+
           </div>
 
           <div class="cart__options">
@@ -70,7 +82,8 @@
             <ul class="cart__options options">
               <li class="options__item">
                 <label class="options__label">
-                  <input class="options__radio sr-only" type="radio" name="delivery" value="0" checked="">
+                  <input class="options__radio sr-only"
+                         type="radio" name="delivery" value="0" checked="">
                   <span class="options__value">
                     Самовывоз <b>бесплатно</b>
                   </span>
@@ -149,8 +162,9 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import InputFormField from '@/components/InputFormField.vue';
+import TextareaFormField from '@/components/TextareaFormField.vue';
 
 export default {
   data() {
@@ -160,11 +174,17 @@ export default {
     };
   },
   name: 'OrderPage',
-  components: { InputFormField },
+  components: { InputFormField, TextareaFormField },
   methods: {
     ...mapActions(['loadBaskets']),
   },
-
+  computed: {
+    ...mapGetters({
+      products: 'cartDetailsProducts',
+      totalAmounts: 'cartTotalAmounts',
+      totalSum: 'cartTotalSum',
+    }),
+  },
   created() {
     this.loadBaskets();
   },
