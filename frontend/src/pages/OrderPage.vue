@@ -121,34 +121,12 @@
           </div>
         </div>
 
-        <div class="cart__block">
-          <ul class="cart__orders">
-            <li class="cart__order">
-              <h3>Смартфон Xiaomi Redmi Note 7 Pro 6/128GB</h3>
-              <b>18 990 ₽</b>
-              <span>Артикул: 150030</span>
-            </li>
-            <li class="cart__order">
-              <h3>Гироскутер Razor Hovertrax 2.0ii</h3>
-              <b>4 990 ₽</b>
-              <span>Артикул: 150030</span>
-            </li>
-            <li class="cart__order">
-              <h3>Электрический дрифт-карт Razor Lil’ Crazy</h3>
-              <b>8 990 ₽</b>
-              <span>Артикул: 150030</span>
-            </li>
-          </ul>
-
-          <div class="cart__total">
-            <p>Доставка: <b>500 ₽</b></p>
-            <p>Итого: <b>3</b> товара на сумму <b>37 970 ₽</b></p>
-          </div>
-
+        <CartBlock :products="products" :total-sum="totalSum" :total-amounts="totalAmounts">
           <button class="cart__button button button--primery" type="submit">
             Оформить заказ
           </button>
-        </div>
+        </CartBlock>
+
         <div class="cart__error form__error-block">
           <h4>Заявка не отправлена!</h4>
           <p>
@@ -165,6 +143,7 @@
 import { mapActions, mapGetters } from 'vuex';
 import InputFormField from '@/components/InputFormField.vue';
 import TextareaFormField from '@/components/TextareaFormField.vue';
+import CartBlock from '@/components/CartBlock.vue';
 
 export default {
   data() {
@@ -174,7 +153,7 @@ export default {
     };
   },
   name: 'OrderPage',
-  components: { InputFormField, TextareaFormField },
+  components: { InputFormField, TextareaFormField, CartBlock },
   methods: {
     ...mapActions(['loadBaskets']),
   },

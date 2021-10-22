@@ -57,7 +57,6 @@ export default {
   filters: { numberFormat },
 
   methods: {
-    // ...mapMutations(['incrementProduct', 'decrementProduct']),
     incrementProduct() {
       this.amount += 1;
     },
