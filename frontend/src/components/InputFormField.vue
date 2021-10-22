@@ -1,6 +1,7 @@
 <template>
   <BaseFormField :title="title" :placeholder="placeholder" :error="error">
-    <input class="form__input" v-model="value" :type="type" :name="name" :placeholder="placeholder">
+    <input class="form__input"
+           v-model="dataValue" :type="type" :name="name" :placeholder="placeholder">
   </BaseFormField>
 </template>
 
