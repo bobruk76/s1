@@ -11,6 +11,7 @@ export default new Vuex.Store({
     cartProducts: null,
     userKey: null,
     preloader: false,
+    orderInfo: null,
     orderId: null,
   },
 
@@ -36,7 +37,15 @@ export default new Vuex.Store({
 
     updateOrderId(state, orderId) {
       state.orderId = orderId;
-      localStorage.setItem('orderId', orderId);
+      let orders = localStorage.getItem('orders');
+      orders = orders ? orders.split(',') : [];
+      orders.push(orderId);
+      localStorage.setItem('orders', orders);
+    },
+
+    updateOrderInfo(state, orderInfo) {
+      state.orderInfo = orderInfo;
+      this.updateOrderId(state, orderInfo.id);
     },
 
     changeAmountProduct(state, { productId, amount }) {

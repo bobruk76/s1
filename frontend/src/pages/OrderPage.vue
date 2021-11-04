@@ -36,7 +36,7 @@
           <div class="cart__data">
 
             <InputFormField
-              :value="formFields.name"
+              v-model="formFields.name"
               :error="formErrors.name"
               placeholder="Введите ваше полное имя"
               title="ФИО"
@@ -129,10 +129,10 @@
           </button>
         </CartBlock>
 
-        <div class="cart__error form__error-block">
+        <div class="cart__error form__error-block" v-show="errorMessage">
           <h4>Заявка не отправлена!</h4>
           <p>
-            Похоже произошла ошибка. Попробуйте отправить снова или перезагрузите страницу.
+            {{ errorMessage }}
           </p>
         </div>
       </form>
@@ -154,6 +154,7 @@ export default {
     return {
       formFields: {},
       formErrors: {},
+      errorMessage: null,
     };
   },
   name: 'OrderPage',
@@ -163,7 +164,7 @@ export default {
     ...mapActions({
       vSendOrder: 'sendOrder',
     }),
-    ...mapMutations(['preloaderChangeStatus', 'updateOrderId']),
+    ...mapMutations(['preloaderChangeStatus', 'updateOrderInfo']),
 
     sendOrder() {
       this.preloaderChangeStatus(true);
@@ -176,12 +177,13 @@ export default {
               userAccessKey: this.getUserKey,
             },
           }).then(
-            () => {
-
+            (response) => {
+              this.updateOrderInfo(response.data);
             },
           ).catch(
             (error) => {
               this.formErrors = error.response.data.error.request || {};
+              this.errorMessage = error.response.data.error.message || '';
             },
           ).then(
             () => {
