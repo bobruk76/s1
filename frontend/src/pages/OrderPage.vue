@@ -164,7 +164,7 @@ export default {
     ...mapActions({
       vSendOrder: 'sendOrder',
     }),
-    ...mapMutations(['preloaderChangeStatus', 'updateOrderInfo']),
+    ...mapMutations(['preloaderChangeStatus', 'updateOrderInfo', 'updateOrderId']),
 
     sendOrder() {
       this.preloaderChangeStatus(true);
@@ -179,6 +179,9 @@ export default {
           }).then(
             (response) => {
               this.updateOrderInfo(response.data);
+              this.updateOrderId(response.data.id);
+              this.preloaderChangeStatus(false);
+              this.$router.push({ name: 'orderInfo', params: { id: response.data.id } });
             },
           ).catch(
             (error) => {

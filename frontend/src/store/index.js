@@ -45,7 +45,6 @@ export default new Vuex.Store({
 
     updateOrderInfo(state, orderInfo) {
       state.orderInfo = orderInfo;
-      this.updateOrderId(state, orderInfo.id);
     },
 
     changeAmountProduct(state, { productId, amount }) {
@@ -160,6 +159,27 @@ export default new Vuex.Store({
       );
     },
 
+    loadOrder(context, orderId) {
+      context.commit('preloaderChangeStatus', true);
+      return axios.get(`${API_BASE_URL}/orders/${orderId}`, {
+        params: {
+          userAccessKey: context.state.userKey,
+        },
+      }).then(
+        (response) => {
+          context.commit('updateOrderInfo', response.data);
+        },
+      ).catch(
+        () => {
+        },
+      )
+        .then(
+          () => {
+            context.commit('preloaderChangeStatus', false);
+          },
+        );
+    },
+
   },
 
   getters: {
@@ -184,5 +204,14 @@ export default new Vuex.Store({
       return state.cartProducts ? state.cartProducts.reduce((sum, item) => sum
         + item.totalPrice, 0) : 0;
     },
+
+    getOrderInfo(state) {
+      return state.orderInfo ? state.orderInfo : {};
+    },
+
+    getAllOrders(state) {
+      return ('orders' in localStorage) ? localStorage.getItem('orders').split(',') : state.orderId;
+    },
+
   },
 });
